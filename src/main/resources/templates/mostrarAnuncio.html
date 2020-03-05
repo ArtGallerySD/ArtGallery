@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Mostrar</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="../static/css/styles.css"
+	th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+
+
+	<p th:each="anuncio : ${anuncios}">
+		<span th:text="'Nombre: ' + ${anuncio.nombre}"></span> <br /> <span
+			th:text="'Asunto: '+ ${anuncio.asunto}"></span> <br /> <span
+			th:text="'Comentario: '+ ${anuncio.comentario}"></span>
+	</p>
+	<br />
+
+	<br>
+	<a href="/">Volver</a>
+	<br>
+
+</body>
+</html>

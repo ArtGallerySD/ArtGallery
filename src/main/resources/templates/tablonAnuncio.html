@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Tablon</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="../static/css/styles.css"
+	th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+
+	<h1>Tablon Anuncio</h1>
+	<br>
+	<h3>Nombre / Asunto</h3>
+
+	<p th:each="anuncio : ${anuncios}">
+		<a
+			th:href="@{/mostrar(name=${anuncio.nombre}, asunt=${anuncio.asunto})}">
+			<span th:text="${anuncio.nombre} + ' / ' + ${anuncio.asunto}"></span>
+		</a><br>
+	</p>
+
+	<br>
+
+	<form action="/query" method="post">
+		<p>
+			<b>Nombre:</b> <input type='text' name='nombre' />
+		</p>
+
+		<p>
+			<b>Asunto:</b> <input type='text' name='asunto' />
+		</p>
+
+		<input type='submit' name='anuncio' value='Buscar' />
+	</form>
+
+	<br>
+	<a href="/insert">Insertar anuncio</a>
+	<br>
+
+</body>
+</html>
