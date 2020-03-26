@@ -29,24 +29,9 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(value = "blog")
-	public String blog(Model model) {
-		return "blog";
+	@RequestMapping(value = "/consults")
+	public String consults(Model model) {
+		return "consults";
 	}
 	
-	@RequestMapping(value = "/portfolio")
-	public String portfolio(Model model) {
-		return "portfolio";
-	}
-	
-	@RequestMapping(value = "/about")
-	public String about(Model model) {
-		return "about";
-	}
-	
-	@RequestMapping(value = "/contact")
-	public String contact(Model model) {
-		return "contact";
-	}
-
 }
