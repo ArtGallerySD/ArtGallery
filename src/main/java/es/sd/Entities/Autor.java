@@ -118,4 +118,12 @@ public class Autor {
 		this.telefonoAutor = telefonoAutor;
 	}
 
+	public List<Cuadro> getCuadrosCreados() {
+		return cuadrosCreados;
+	}
+
+	public void setCuadrosCreados(List<Cuadro> cuadrosCreados) {
+		this.cuadrosCreados = cuadrosCreados;
+	}
+
 }

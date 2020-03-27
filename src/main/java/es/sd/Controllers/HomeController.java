@@ -1,27 +1,55 @@
 package es.sd.Controllers;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import javax.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import es.sd.Entities.Autor;
+import es.sd.Entities.Cliente;
+import es.sd.Entities.Cuadro;
+import es.sd.Repositories.AutorRepository;
+import es.sd.Repositories.ClienteRepository;
+import es.sd.Repositories.CuadroRepository;
 
 @Controller
 public class HomeController {
 
+	@Autowired
+	CuadroRepository repCuadros;
+
+	@Autowired
+	AutorRepository repAutores;
+
+	@Autowired
+	ClienteRepository repClientes;
+
 	@PostConstruct
-	public void init() {
-		/*
-		 * Autor p1 = new Autor("rodrigamerXXX", "Rodrigo", "Sanchez"); Autor p2 = new
-		 * Autor("loliSlayerX", "Jesús-Alberto", "De las Heras"); repPersonas.save(p1);
-		 * repPersonas.save(p2);
-		 * 
-		 * Cliente hola = new Cliente("Hola...", "XXXX"); Cliente adios = new
-		 * Cliente("Adios...", "XXXX"); hola.setAutor(p1); adios.setAutor(p2);
-		 * repAnuncios.save(hola); repAnuncios.save(adios);
-		 * 
-		 * p1.getAnuncios().add(hola); p2.getAnuncios().add(adios);
-		 * repPersonas.save(p1); repPersonas.save(p2);
-		 */
+	public void construirBD() {
+
+		Autor autor1 = new Autor("José", "Pérez", "22222222J", 1972, "Ecuador", 28221, "joseperez@art.com", 622131522);
+		repAutores.save(autor1);
+
+		Cliente cliente1 = new Cliente("Fernando", "López", "11111111H", 21345, "fernandolopez@gmail.com", 687451227);
+		repClientes.save(cliente1);
+
+		Cuadro cuadro1 = new Cuadro("Visita de la noche", "Bastante desgastado", 2017, 30.52, 26.88, 3000);
+		cuadro1.setAutor(autor1);
+		LocalDate local = LocalDate.of(2010, 01, 12);
+		Date fecha = Date.valueOf(local);
+		cuadro1.setFechaVenta(fecha);
+		repCuadros.save(cuadro1);
+
+		autor1.getCuadrosCreados().add(cuadro1);
+		repAutores.save(autor1);
+
+		cuadro1.setComprador(cliente1);
+		cliente1.getCuadrosComprados().add(cuadro1);
+		repCuadros.save(cuadro1);
+		repClientes.save(cliente1);
+
 	}
 
 	@RequestMapping(value = "/")
@@ -29,9 +57,9 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/consults")
-	public String consults(Model model) {
-		return "consults";
+	@RequestMapping(value = "/consultas")
+	public String consultas(Model model) {
+		return "consultas";
 	}
-	
+
 }

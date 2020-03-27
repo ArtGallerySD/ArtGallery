@@ -46,10 +46,10 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li><a href="/">Home</a></li>
-					<li class="fh5co-active"><a href="/paintings">Cuadros</a></li>
-					<li><a href="/authors">Autores</a></li>
-					<li><a href="/clients">Clientes</a></li>
-					<li><a href="/consults">Consultas y Modificaciones</a></li>
+					<li><a href="/cuadros">Cuadros</a></li>
+					<li class="fh5co-active"><a href="/autores">Autores</a></li>
+					<li><a href="/clientes">Clientes</a></li>
+					<li><a href="/consultas">Consultas y Modificaciones</a></li>
 				</ul>
 			</nav>
 		</aside>
@@ -60,50 +60,60 @@
 
 				<div class="row">
 					<div class="col-md-4">
-						<h2>Registrar Cuadro</h2>
+						<h2>Registro Autores</h2>
 					</div>
 				</div>
 
-				<form action="">
+				<form action="/registroAutores">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-6">
+
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Título">
+										<input type="text" name="nombreAutor" class="form-control"
+											placeholder="Nombre" required>
 									</div>
 									<div class="form-group">
-										<input type="number" class="form-control"
-											placeholder="Año de finalización">
+										<input type="text" name="apellidosAutor" class="form-control"
+											placeholder="Apellidos" required>
 									</div>
 									<div class="form-group">
-										<input type="number" class="form-control"
-											placeholder="Anchura">
+										<input type="text" name="nifAutor" class="form-control"
+											placeholder="NIF" required>
 									</div>
 									<div class="form-group">
-										<input type="number" class="form-control" placeholder="Altura">
+										<input type="number" name="anoNacimientoAutor"
+											class="form-control" placeholder="Fecha de Nacimiento"
+											required>
 									</div>
+
 								</div>
+
 								<div class="col-md-6">
+
 									<div class="form-group">
-										<textarea name="" id="message" cols="30" rows="7"
-											class="form-control" placeholder="Descripción"></textarea>
+										<input type="text" name="paisNacimientoAutor"
+											class="form-control" placeholder="País de Nacimiento"
+											required>
 									</div>
 									<div class="form-group">
-										<input type="number" class="form-control"
-											placeholder="Precio (€)">
+										<input type="number" name="cpAutor" class="form-control"
+											placeholder="Código Postal" required>
 									</div>
 									<div class="form-group">
-										<select name="autor" class="form-control">
-											<option th:if="autor.id != null" th:each="autor : ${autores}"
-												th:value="${autor.nombreAutor}"
-												th:text="${autor.nombreAutor}"></option>
-										</select>
+										<input type="text" name="mailAutor" class="form-control"
+											placeholder="E-mail" required>
+									</div>
+									<div class="form-group">
+										<input type="number" name="telefonoAutor" class="form-control"
+											placeholder="Teléfono" required>
 									</div>
 									<div class="form-group">
 										<input type="submit" class="btn btn-primary btn-md"
 											value="Registrar">
 									</div>
+
 								</div>
 							</div>
 						</div>
