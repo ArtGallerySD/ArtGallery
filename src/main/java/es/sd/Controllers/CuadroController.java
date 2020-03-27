@@ -35,9 +35,9 @@ public class CuadroController {
 	}
 
 	@RequestMapping(value = "/registroCuadros")
-	public String registrarCuadro(@RequestParam String autor, Cuadro cuadro) {
+	public String registrarCuadro(@RequestParam String nombreAutor, Cuadro cuadro) {
 
-		Autor a = repAutores.findByNombreAutor(autor);
+		Autor a = repAutores.findByNombreAutor(nombreAutor);
 		cuadro.setAutor(a);
 
 		repCuadros.save(cuadro);

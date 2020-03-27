@@ -80,10 +80,11 @@
 									</div>
 									<div class="form-group">
 										<input type="text" name="nifCliente" class="form-control"
-											placeholder="NIF" required>
+											pattern="[0-9]{8}[A-Za-z]{1}" placeholder="NIF" required>
 									</div>
 									<div class="form-group">
-										<input type="number" name="cpCliente" class="form-control"
+										<input type="text" name="cpCliente" class="form-control"
+											pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}"
 											placeholder="Código Postal" required>
 									</div>
 
@@ -92,12 +93,13 @@
 								<div class="col-md-6">
 
 									<div class="form-group">
-										<input type="text" name="mailCliente" class="form-control"
+										<input type="email" name="mailCliente" class="form-control"
 											placeholder="E-mail" required>
 									</div>
 									<div class="form-group">
-										<input type="number" name="telefonoCliente"
-											class="form-control" placeholder="Teléfono" required>
+										<input type="text" name="telefonoCliente"
+											class="form-control" pattern="[0-9]{9}"
+											placeholder="Teléfono" required>
 									</div>
 									<div class="form-group">
 										<input type="submit" class="btn btn-primary btn-md"

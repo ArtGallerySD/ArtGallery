@@ -80,12 +80,12 @@
 									</div>
 									<div class="form-group">
 										<input type="text" name="nifAutor" class="form-control"
-											placeholder="NIF" required>
+											placeholder="NIF" pattern="[0-9]{8}[A-Za-z]{1}" required>
 									</div>
 									<div class="form-group">
 										<input type="number" name="anoNacimientoAutor"
-											class="form-control" placeholder="Año de Nacimiento"
-											required>
+											class="form-control" min="1900" max="2021"
+											placeholder="Año de Nacimiento" required>
 									</div>
 
 								</div>
@@ -98,16 +98,17 @@
 											required>
 									</div>
 									<div class="form-group">
-										<input type="number" name="cpAutor" class="form-control"
+										<input type="text" name="cpAutor" class="form-control"
+											pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}"
 											placeholder="Código Postal" required>
 									</div>
 									<div class="form-group">
-										<input type="text" name="mailAutor" class="form-control"
+										<input type="email" name="mailAutor" class="form-control"
 											placeholder="E-mail" required>
 									</div>
 									<div class="form-group">
-										<input type="number" name="telefonoAutor" class="form-control"
-											placeholder="Teléfono" required>
+										<input type="text" name="telefonoAutor" class="form-control"
+											pattern="[0-9]{9}" placeholder="Teléfono" required>
 									</div>
 									<div class="form-group">
 										<input type="submit" class="btn btn-primary btn-md"
