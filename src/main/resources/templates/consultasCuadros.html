@@ -49,39 +49,46 @@
 					<li><a href="/cuadros">Cuadros</a></li>
 					<li><a href="/autores">Autores</a></li>
 					<li><a href="/clientes">Clientes</a></li>
-					<li><a href="/consultas">Consultas y Modificaciones</a></li>
+					<li class="fh5co-active"><a href="/consultas">Consultas y
+							Modificaciones</a></li>
 				</ul>
 			</nav>
 		</aside>
 
 		<div id="fh5co-main">
-			<aside id="fh5co-hero" class="js-fullheight">
-				<div class="flexslider js-fullheight">
-					<ul class="slides">
+			<div class="fh5co-narrow-content">
+				<h2 class="fh5co-heading animate-box"
+					data-animate-effect="fadeInLeft">Cuadros</h2>
 
-						<li style="background-image: url(/images/register_success.jpg);">
-							<div class="overlay"></div>
-							<div class="container-fluid">
+				<div class="row row-bottom-padded-md">
+					<div th:each="cuadro : ${cuadros}">
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
 
-								<div class="row">
-									<div
-										class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-										<div class="slider-text-inner">
-											<h1>Se ha registrado con éxito</h1>
-
-											<p>
-												<a class="btn btn-primary btn-learn" href="/">Volver</a>
-											</p>
-										</div>
-									</div>
-								</div>
-
+							<b><span th:text="'Título: ' + ${cuadro.tituloCuadro}" /></b><br />
+							<b><span th:text="'Descripción: ' + ${cuadro.descripcionCuadro}" /></b><br />
+							<b><span th:text="'Año de Finalización: ' + ${cuadro.anoFinCuadro}" /></b><br /> 
+							<b><span th:text="'Ancho: ' + ${cuadro.anchoCuadro}" /></b><br />
+							<b><span th:text="'Alto: ' + ${cuadro.altoCuadro}" /></b><br />
+							<b><span th:text="'Precio: ' + ${cuadro.precioCuadro}" /></b><br />
+							<b><span th:text="'Autor: ' + ${cuadro.autor.nombreAutor}" /></b><br />
+							
+							<div th:if="${cuadro.fechaVenta} != null">
+								<b><span th:text="'Comprador: ' + ${cuadro.comprador.nombreCliente}" /></b><br />
+								<b><span th:text="'Fecha de Venta: ' + ${cuadro.fechaVenta}" /></b><br />
 							</div>
-						</li>
-
-					</ul>
+							
+							<div th:if="${cuadro.comprador} == null">
+								<b><span th:text="'Cuadro sin propietario'"/></b><br />
+							</div>
+							
+							<a th:href="@{/modificarCuadro(index=${cuadroStat.index})}">Modificar</a><br />
+							
+							<br/>
+						</div>
+					</div>
 				</div>
-			</aside>
+
+			</div>
 		</div>
 	</div>
 

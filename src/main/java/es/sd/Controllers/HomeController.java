@@ -57,9 +57,4 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/consultas")
-	public String consultas(Model model) {
-		return "consultas";
-	}
-
 }

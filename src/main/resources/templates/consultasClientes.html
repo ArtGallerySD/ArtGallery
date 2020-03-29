@@ -49,39 +49,36 @@
 					<li><a href="/cuadros">Cuadros</a></li>
 					<li><a href="/autores">Autores</a></li>
 					<li><a href="/clientes">Clientes</a></li>
-					<li><a href="/consultas">Consultas y Modificaciones</a></li>
+					<li class="fh5co-active"><a href="/consultas">Consultas y
+							Modificaciones</a></li>
 				</ul>
 			</nav>
 		</aside>
 
 		<div id="fh5co-main">
-			<aside id="fh5co-hero" class="js-fullheight">
-				<div class="flexslider js-fullheight">
-					<ul class="slides">
+			<div class="fh5co-narrow-content">
+				<h2 class="fh5co-heading animate-box"
+					data-animate-effect="fadeInLeft">Clientes</h2>
 
-						<li style="background-image: url(/images/register_success.jpg);">
-							<div class="overlay"></div>
-							<div class="container-fluid">
+				<div class="row row-bottom-padded-md">
+					<div th:each="cliente : ${clientes}">
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
 
-								<div class="row">
-									<div
-										class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-										<div class="slider-text-inner">
-											<h1>Se ha registrado con éxito</h1>
-
-											<p>
-												<a class="btn btn-primary btn-learn" href="/">Volver</a>
-											</p>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</li>
-
-					</ul>
+							<b><span th:text="'Nombre: ' + ${cliente.nombreCliente}" /></b><br />
+							<b><span th:text="'Apellidos: ' + ${cliente.apellidosCliente}" /></b><br />
+							<b><span th:text="'NIF: ' + ${cliente.nifCliente}" /></b><br />
+							<b><span th:text="'Código Postal: ' + ${cliente.cpCliente}" /></b><br />
+							<b><span th:text="'E-mail: ' + ${cliente.mailCliente}" /></b><br />
+							<b><span th:text="'Teléfono: ' + ${cliente.telefonoCliente}" /></b><br />
+							
+							<a th:href="@{/modificarCliente(index=${clienteStat.index})}">Modificar</a><br />
+							
+							<br/>
+						</div>
+					</div>
 				</div>
-			</aside>
+
+			</div>
 		</div>
 	</div>
 

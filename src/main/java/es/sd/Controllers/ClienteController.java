@@ -1,5 +1,6 @@
 package es.sd.Controllers;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,7 @@ import es.sd.Repositories.ClienteRepository;
 public class ClienteController {
 
 	@Autowired
-	ClienteRepository repCliente;
+	ClienteRepository repClientes;
 
 	@RequestMapping(value = "/clientes")
 	public String clientes(Model model) {
@@ -20,10 +21,20 @@ public class ClienteController {
 
 	@RequestMapping(value = "/registroClientes")
 	public String registrarCliente(Cliente cliente) {
-		
-		repCliente.save(cliente);
+
+		repClientes.save(cliente);
 
 		return "registro";
+	}
+
+	@RequestMapping(value = "/consultasClientes")
+	public String mostrarClientes(Model model) {
+
+		List<Cliente> clientes = repClientes.findAll();
+
+		model.addAttribute("clientes", clientes);
+
+		return "consultasClientes";
 	}
 
 }

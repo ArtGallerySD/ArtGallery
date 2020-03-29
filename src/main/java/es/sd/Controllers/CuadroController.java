@@ -48,4 +48,14 @@ public class CuadroController {
 		return "registro";
 	}
 
+	@RequestMapping(value = "/consultasCuadros")
+	public String mostrarCuadros(Model model) {
+
+		List<Cuadro> cuadros = repCuadros.findAll();
+
+		model.addAttribute("cuadros", cuadros);
+
+		return "consultasCuadros";
+	}
+
 }

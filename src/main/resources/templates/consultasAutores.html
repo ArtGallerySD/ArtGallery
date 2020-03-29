@@ -49,39 +49,38 @@
 					<li><a href="/cuadros">Cuadros</a></li>
 					<li><a href="/autores">Autores</a></li>
 					<li><a href="/clientes">Clientes</a></li>
-					<li><a href="/consultas">Consultas y Modificaciones</a></li>
+					<li class="fh5co-active"><a href="/consultas">Consultas y
+							Modificaciones</a></li>
 				</ul>
 			</nav>
 		</aside>
 
 		<div id="fh5co-main">
-			<aside id="fh5co-hero" class="js-fullheight">
-				<div class="flexslider js-fullheight">
-					<ul class="slides">
+			<div class="fh5co-narrow-content">
+				<h2 class="fh5co-heading animate-box"
+					data-animate-effect="fadeInLeft">Autores</h2>
 
-						<li style="background-image: url(/images/register_success.jpg);">
-							<div class="overlay"></div>
-							<div class="container-fluid">
+				<div class="row row-bottom-padded-md">
+					<div th:each="autor : ${autores}">
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
 
-								<div class="row">
-									<div
-										class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-										<div class="slider-text-inner">
-											<h1>Se ha registrado con éxito</h1>
-
-											<p>
-												<a class="btn btn-primary btn-learn" href="/">Volver</a>
-											</p>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</li>
-
-					</ul>
+							<b><span th:text="'Nombre: ' + ${autor.nombreAutor}" /></b><br />
+							<b><span th:text="'Apellidos: ' + ${autor.apellidosAutor}" /></b><br />
+							<b><span th:text="'NIF: ' + ${autor.nifAutor}" /></b><br /> 
+							<b><span th:text="'Año de Nacimiento: ' + ${autor.anoNacimientoAutor}" /></b><br />
+							<b><span th:text="'País de Nacimiento: ' + ${autor.paisNacimientoAutor}" /></b><br />
+							<b><span th:text="'Código Postal: ' + ${autor.cpAutor}" /></b><br />
+							<b><span th:text="'E-mail: ' + ${autor.mailAutor}" /></b><br />
+							<b><span th:text="'Teléfono: ' + ${autor.telefonoAutor}" /></b><br />
+							
+							<a th:href="@{/modificarAutor(index=${autorStat.index})}">Modificar</a><br />
+							
+							<br/>
+						</div>
+					</div>
 				</div>
-			</aside>
+
+			</div>
 		</div>
 	</div>
 

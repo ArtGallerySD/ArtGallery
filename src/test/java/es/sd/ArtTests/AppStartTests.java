@@ -1,4 +1,4 @@
-package es.sd.Ej4EnviarAnuncioObjeto;
+package es.sd.ArtTests;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
