@@ -41,7 +41,8 @@
 			class="border js-fullheight">
 
 			<h1 id="fh5co-logo">
-				<a href="/"><img src="/images/logo.png" width="250px" height="100px"></a>
+				<a href="/"><img src="/images/logo.png" width="250px"
+					height="100px"></a>
 			</h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
@@ -64,7 +65,7 @@
 					</div>
 				</div>
 
-				<form action="/registroCuadros">
+				<form action="/edicionCuadros">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">
@@ -72,19 +73,20 @@
 
 									<div class="form-group">
 										<input type="text" name="tituloCuadro" class="form-control"
-											placeholder="Título" required>
+											th:value="${cuadro.tituloCuadro}" required>
 									</div>
 									<div class="form-group">
 										<input type="number" name="anoFinCuadro" class="form-control"
-											placeholder="Año de finalización" required>
+											th:value="${cuadro.anoFinCuadro}" required>
 									</div>
 									<div class="form-group">
 										<input type="number" name="anchoCuadro" class="form-control"
-											min="0" step="0.001" placeholder="Anchura" required>
+											min="0" step="0.001" th:value="${cuadro.anchoCuadro}"
+											required>
 									</div>
 									<div class="form-group">
 										<input type="number" name="altoCuadro" class="form-control"
-											min="0" step="0.001" placeholder="Altura" required>
+											min="0" step="0.001" th:value="${cuadro.altoCuadro}" required>
 									</div>
 
 								</div>
@@ -93,11 +95,12 @@
 
 									<div class="form-group">
 										<textarea name="descripcionCuadro" id="message" cols="30"
-											rows="7" class="form-control" placeholder="Descripción"></textarea>
+											rows="7" class="form-control"
+											th:field="${cuadro.descripcionCuadro}"></textarea>
 									</div>
 									<div class="form-group">
 										<input type="number" name="precioCuadro" class="form-control"
-											min="0" placeholder="Precio (€)" required>
+											min="0" th:value="${cuadro.precioCuadro}" required>
 									</div>
 									<div class="form-group">
 										<select name="nombreAutor" class="form-control" required>

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import es.sd.Entities.Autor;
+import es.sd.Entities.Cliente;
 import es.sd.Entities.Cuadro;
 import es.sd.Repositories.AutorRepository;
 import es.sd.Repositories.ClienteRepository;
@@ -59,22 +60,57 @@ public class CuadroController {
 	}
 
 	@RequestMapping(value = "/modificarCuadro")
-	public String modificarCuadro(Model model, Cuadro c) {
+	public String modificarCuadro(@RequestParam long id, Model model) {
 
-		Cuadro cuadro = repCuadros.findByTituloCuadro(c.getTituloCuadro());
-
+		Cuadro cuadro = repCuadros.findByIdCuadro(id);
+		List<Autor> autores = repAutores.findAll();
+		
 		model.addAttribute("cuadro", cuadro);
+		model.addAttribute("autores", autores);
 
 		return "modificarCuadro";
 	}
-	
-	@RequestMapping(value = "/comprarCuadro")
-	public String comprarCuadro(Model model, Cuadro c) {
 
-		Cuadro cuadro = repCuadros.findByTituloCuadro(c.getTituloCuadro());
+	@RequestMapping(value = "/comprarCuadro")
+	public String comprarCuadro(@RequestParam long idCompra, Model model) {
+
+		Cuadro cuadro = repCuadros.findByIdCuadro(idCompra);
 
 		model.addAttribute("cuadro", cuadro);
 
 		return "comprarCuadro";
 	}
+
+	@RequestMapping(value = "/edicionCuadros")
+	public String resultadoEdicionCuadro(@RequestParam String nombreAutor, Cuadro c) {
+
+		Cuadro cuadro = repCuadros.findByIdCuadro(c.getIdCuadro());
+		repCuadros.delete(cuadro);
+
+		Autor autororiginal = repAutores.findByNifAutor(cuadro.getAutor().getNifAutor());
+		autororiginal.getCuadrosCreados().remove(cuadro);
+
+		Autor a = repAutores.findByNombreAutor(nombreAutor);
+		if (!autororiginal.getNifAutor().equals(a.getNifAutor()))
+			repAutores.save(autororiginal);
+		else
+			repAutores.delete(autororiginal);
+
+		/*
+		 * Cliente cliente =
+		 * repClientes.findByNifCliente(cuadro.getComprador().getNifCliente()); if
+		 * (cliente != null) {
+		 * 
+		 * }
+		 */
+
+		c.setAutor(a);
+		repCuadros.save(c);
+
+		a.getCuadrosCreados().add(c);
+		repAutores.save(a);
+
+		return "edicion";
+	}
+
 }

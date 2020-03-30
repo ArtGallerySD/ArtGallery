@@ -8,6 +8,8 @@ import es.sd.Entities.Cuadro;
 
 public interface CuadroRepository extends JpaRepository<Cuadro, Long> {
 
+	Cuadro findByIdCuadro(long idCuadro);
+	
 	Cuadro findByTituloCuadro(String tituloCuadro);
 
 	List<Cuadro> findByDescripcionCuadro(String descripcionCuadro);

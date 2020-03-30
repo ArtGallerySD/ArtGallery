@@ -71,7 +71,7 @@
 							<b><span th:text="'E-mail: ' + ${cliente.mailCliente}" /></b><br />
 							<b><span th:text="'Teléfono: ' + ${cliente.telefonoCliente}" /></b><br />
 							
-							<a th:href="@{/modificarCliente(index=${clienteStat.index})}">Editar</a><br />
+							<a th:href="@{/modificarCliente(id=${cliente.idCliente})}">Editar</a><br />
 							
 							<br/>
 						</div>

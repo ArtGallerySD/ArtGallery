@@ -79,10 +79,10 @@
 							
 							<div th:if="${cuadro.comprador} == null">
 								<b><span th:text="'Cuadro sin propietario'"/></b><br />
-								<a th:href="@{/comprarCuadro(index=${cuadroStat.index})}">Comprar</a><br />
+								<a th:href="@{/comprarCuadro(idCompra=${cuadro.idCuadro})}">Comprar</a><br />
 							</div>
 							
-							<a th:href="@{/modificarCuadro(index=${cuadroStat.index})}">Editar</a><br />
+							<a th:href="@{/modificarCuadro(id=${cuadro.idCuadro})}">Editar</a><br />
 							
 							<br/>
 						</div>

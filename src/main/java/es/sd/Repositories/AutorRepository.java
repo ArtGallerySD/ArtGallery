@@ -7,6 +7,8 @@ import es.sd.Entities.Autor;
 
 public interface AutorRepository extends JpaRepository<Autor, Long> {
 
+	Autor findByIdAutor(long idAutor);
+	
 	Autor findByNombreAutor(String nombreAutor);
 
 	List<Autor> findByApellidosAutor(String apellidosAutor);

@@ -41,81 +41,47 @@
 			class="border js-fullheight">
 
 			<h1 id="fh5co-logo">
-				<a href="/"><img src="/images/logo.png" width="250px"
-					height="100px"></a>
+				<a href="/"><img src="/images/logo.png" width="250px" height="100px"></a>
 			</h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li><a href="/">Home</a></li>
 					<li><a href="/cuadros">Cuadros</a></li>
 					<li><a href="/autores">Autores</a></li>
-					<li class="fh5co-active"><a href="/clientes">Clientes</a></li>
+					<li><a href="/clientes">Clientes</a></li>
 					<li><a href="/consultas">Consultas y Modificaciones</a></li>
 				</ul>
 			</nav>
 		</aside>
 
 		<div id="fh5co-main">
-			<div class="fh5co-narrow-content animate-box"
-				data-animate-effect="fadeInLeft">
+			<aside id="fh5co-hero" class="js-fullheight">
+				<div class="flexslider js-fullheight">
+					<ul class="slides">
 
-				<div class="row">
-					<div class="col-md-4">
-						<h2>Editar Cliente</h2>
-					</div>
-				</div>
+						<li style="background-image: url(/images/register_success.jpg);">
+							<div class="overlay"></div>
+							<div class="container-fluid">
 
-				<form action="/edicionClientes">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-6">
+								<div class="row">
+									<div
+										class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+										<div class="slider-text-inner">
+											<h1>Se ha editado con éxito</h1>
 
-									<div class="form-group">
-										<input type="text" name="nombreCliente" class="form-control"
-											th:value="${cliente.nombreCliente}" required>
+											<p>
+												<a class="btn btn-primary btn-learn" href="/">Volver</a>
+											</p>
+										</div>
 									</div>
-									<div class="form-group">
-										<input type="text" name="apellidosCliente"
-											class="form-control" th:value="${cliente.apellidosCliente}"
-											required>
-									</div>
-									<div class="form-group">
-										<input type="text" name="nifCliente" class="form-control"
-											pattern="[0-9]{8}[A-Za-z]{1}"
-											th:value="${cliente.nifCliente}" required>
-									</div>
-									<div class="form-group">
-										<input type="text" name="cpCliente" class="form-control"
-											pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}"
-											th:value="${cliente.cpCliente}" required>
-									</div>
-
 								</div>
 
-								<div class="col-md-6">
-
-									<div class="form-group">
-										<input type="email" name="mailCliente" class="form-control"
-											th:value="${cliente.mailCliente}" required>
-									</div>
-									<div class="form-group">
-										<input type="text" name="telefonoCliente" class="form-control"
-											pattern="[0-9]{9}" th:value="${cliente.telefonoCliente}"
-											required>
-									</div>
-									<div class="form-group">
-										<input type="submit" class="btn btn-primary btn-md"
-											value="Editar">
-									</div>
-
-								</div>
 							</div>
-						</div>
-					</div>
-				</form>
+						</li>
 
-			</div>
+					</ul>
+				</div>
+			</aside>
 		</div>
 	</div>
 

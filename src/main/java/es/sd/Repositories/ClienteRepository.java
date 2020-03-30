@@ -6,6 +6,8 @@ import es.sd.Entities.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
+	Cliente findByIdCliente(long idCliente);
+	
 	List<Cliente> findByNombreCliente(String nombreCliente);
 
 	List<Cliente> findByApellidosCliente(String apellidosCliente);

@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import es.sd.Entities.Autor;
 import es.sd.Repositories.AutorRepository;
 
@@ -38,12 +40,24 @@ public class AutorController {
 	}
 
 	@RequestMapping(value = "/modificarAutor")
-	public String modificarAutor(Model model, Autor a) {
+	public String modificarAutor(@RequestParam long id, Model model) {
 
-		Autor autor = repAutores.findByNifAutor(a.getNifAutor());
+		Autor autor = repAutores.findByIdAutor(id);
 
 		model.addAttribute("autor", autor);
 
 		return "modificarAutor";
 	}
+
+	@RequestMapping(value = "/edicionAutores")
+	public String resultadoEdicionAutor(Autor a) {
+
+		Autor autor = repAutores.findByIdAutor(a.getIdAutor());
+
+		repAutores.delete(autor);
+		repAutores.save(a);
+
+		return "edicion";
+	}
+
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import es.sd.Entities.Cliente;
 import es.sd.Repositories.ClienteRepository;
 
@@ -38,13 +39,24 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/modificarCliente")
-	public String modificarCliente(Model model, Cliente c) {
+	public String modificarCliente(@RequestParam long id, Model model) {
 
-		Cliente cliente = repClientes.findByNifCliente(c.getNifCliente());
+		Cliente cliente = repClientes.findByIdCliente(id);
 
 		model.addAttribute("cliente", cliente);
 
 		return "modificarCliente";
+	}
+	
+	@RequestMapping(value = "/edicionClientes")
+	public String resultadoEdicionCliente(Cliente c) {
+
+		Cliente cliente = repClientes.findByIdCliente(c.getIdCliente());
+
+		repClientes.delete(cliente);
+		repClientes.save(c);
+
+		return "edicion";
 	}
 
 }
