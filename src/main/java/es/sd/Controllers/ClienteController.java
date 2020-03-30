@@ -37,4 +37,14 @@ public class ClienteController {
 		return "consultasClientes";
 	}
 
+	@RequestMapping(value = "/modificarCliente")
+	public String modificarCliente(Model model, Cliente c) {
+
+		Cliente cliente = repClientes.findByNifCliente(c.getNifCliente());
+
+		model.addAttribute("cliente", cliente);
+
+		return "modificarCliente";
+	}
+
 }

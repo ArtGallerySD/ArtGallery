@@ -58,4 +58,23 @@ public class CuadroController {
 		return "consultasCuadros";
 	}
 
+	@RequestMapping(value = "/modificarCuadro")
+	public String modificarCuadro(Model model, Cuadro c) {
+
+		Cuadro cuadro = repCuadros.findByTituloCuadro(c.getTituloCuadro());
+
+		model.addAttribute("cuadro", cuadro);
+
+		return "modificarCuadro";
+	}
+	
+	@RequestMapping(value = "/comprarCuadro")
+	public String comprarCuadro(Model model, Cuadro c) {
+
+		Cuadro cuadro = repCuadros.findByTituloCuadro(c.getTituloCuadro());
+
+		model.addAttribute("cuadro", cuadro);
+
+		return "comprarCuadro";
+	}
 }

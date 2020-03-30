@@ -36,4 +36,14 @@ public class AutorController {
 
 		return "consultasAutores";
 	}
+
+	@RequestMapping(value = "/modificarAutor")
+	public String modificarAutor(Model model, Autor a) {
+
+		Autor autor = repAutores.findByNifAutor(a.getNifAutor());
+
+		model.addAttribute("autor", autor);
+
+		return "modificarAutor";
+	}
 }

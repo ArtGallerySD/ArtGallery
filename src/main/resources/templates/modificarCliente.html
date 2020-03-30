@@ -48,37 +48,68 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="/cuadros">Cuadros</a></li>
 					<li><a href="/autores">Autores</a></li>
-					<li><a href="/clientes">Clientes</a></li>
-					<li class="fh5co-active"><a href="/consultas">Consultas y
-							Modificaciones</a></li>
+					<li class="fh5co-active"><a href="/clientes">Clientes</a></li>
+					<li><a href="/consultas">Consultas y Modificaciones</a></li>
 				</ul>
 			</nav>
 		</aside>
 
 		<div id="fh5co-main">
-			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading animate-box"
-					data-animate-effect="fadeInLeft">Autores</h2>
+			<div class="fh5co-narrow-content animate-box"
+				data-animate-effect="fadeInLeft">
 
-				<div class="row row-bottom-padded-md">
-					<div th:each="autor : ${autores}">
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-
-							<b><span th:text="'Nombre: ' + ${autor.nombreAutor}" /></b><br />
-							<b><span th:text="'Apellidos: ' + ${autor.apellidosAutor}" /></b><br />
-							<b><span th:text="'NIF: ' + ${autor.nifAutor}" /></b><br /> 
-							<b><span th:text="'Año de Nacimiento: ' + ${autor.anoNacimientoAutor}" /></b><br />
-							<b><span th:text="'País de Nacimiento: ' + ${autor.paisNacimientoAutor}" /></b><br />
-							<b><span th:text="'Código Postal: ' + ${autor.cpAutor}" /></b><br />
-							<b><span th:text="'E-mail: ' + ${autor.mailAutor}" /></b><br />
-							<b><span th:text="'Teléfono: ' + ${autor.telefonoAutor}" /></b><br />
-							
-							<a th:href="@{/modificarAutor(index=${autorStat.index})}">Editar</a><br />
-							
-							<br/>
-						</div>
+				<div class="row">
+					<div class="col-md-4">
+						<h2>Registro Clientes</h2>
 					</div>
 				</div>
+
+				<form action="/registroClientes">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-6">
+
+									<div class="form-group">
+										<input type="text" name="nombreCliente" class="form-control"
+											placeholder="Nombre" required>
+									</div>
+									<div class="form-group">
+										<input type="text" name="apellidosCliente"
+											class="form-control" placeholder="Apellidos" required>
+									</div>
+									<div class="form-group">
+										<input type="text" name="nifCliente" class="form-control"
+											pattern="[0-9]{8}[A-Za-z]{1}" placeholder="NIF" required>
+									</div>
+									<div class="form-group">
+										<input type="text" name="cpCliente" class="form-control"
+											pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}"
+											placeholder="Código Postal" required>
+									</div>
+
+								</div>
+
+								<div class="col-md-6">
+
+									<div class="form-group">
+										<input type="email" name="mailCliente" class="form-control"
+											placeholder="E-mail" required>
+									</div>
+									<div class="form-group">
+										<input type="text" name="telefonoCliente" class="form-control"
+											pattern="[0-9]{9}" placeholder="Teléfono" required>
+									</div>
+									<div class="form-group">
+										<input type="submit" class="btn btn-primary btn-md"
+											value="Registrar">
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
 
 			</div>
 		</div>
