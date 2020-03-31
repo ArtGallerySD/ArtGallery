@@ -14,7 +14,9 @@ import es.sd.Repositories.AutorRepository;
 public class AutorController {
 
 	@Autowired
-	AutorRepository repAutores;
+	private AutorRepository repAutores;
+
+	private Autor autorEditando;
 
 	@RequestMapping(value = "/autores")
 	public String autores(Model model) {
@@ -43,6 +45,7 @@ public class AutorController {
 	public String modificarAutor(@RequestParam long id, Model model) {
 
 		Autor autor = repAutores.findByIdAutor(id);
+		autorEditando = autor;
 
 		model.addAttribute("autor", autor);
 
@@ -52,11 +55,31 @@ public class AutorController {
 	@RequestMapping(value = "/edicionAutores")
 	public String resultadoEdicionAutor(Autor a) {
 
-		Autor autor = repAutores.findByIdAutor(a.getIdAutor());
+		if (!autorEditando.getNombreAutor().equals(a.getNombreAutor()))
+			autorEditando.setNombreAutor(a.getNombreAutor());
 
-		repAutores.delete(autor);
-		repAutores.save(a);
+		if (!autorEditando.getApellidosAutor().equals(a.getApellidosAutor()))
+			autorEditando.setApellidosAutor(a.getApellidosAutor());
 
+		if (!autorEditando.getNifAutor().equals(a.getNifAutor()))
+			autorEditando.setNifAutor(a.getNifAutor());
+
+		if (autorEditando.getAnoNacimientoAutor() != a.getAnoNacimientoAutor())
+			autorEditando.setAnoNacimientoAutor(a.getAnoNacimientoAutor());
+
+		if (!autorEditando.getPaisNacimientoAutor().equals(a.getPaisNacimientoAutor()))
+			autorEditando.setPaisNacimientoAutor(a.getPaisNacimientoAutor());
+
+		if (autorEditando.getCpAutor() != a.getCpAutor())
+			autorEditando.setCpAutor(a.getCpAutor());
+
+		if (!autorEditando.getMailAutor().equals(a.getMailAutor()))
+			autorEditando.setMailAutor(a.getMailAutor());
+
+		if (autorEditando.getTelefonoAutor() != a.getTelefonoAutor())
+			autorEditando.setTelefonoAutor(a.getTelefonoAutor());
+
+		repAutores.save(autorEditando);
 		return "edicion";
 	}
 

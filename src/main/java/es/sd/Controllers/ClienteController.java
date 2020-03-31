@@ -13,7 +13,9 @@ import es.sd.Repositories.ClienteRepository;
 public class ClienteController {
 
 	@Autowired
-	ClienteRepository repClientes;
+	private ClienteRepository repClientes;
+
+	private Cliente clienteEditando;
 
 	@RequestMapping(value = "/clientes")
 	public String clientes(Model model) {
@@ -42,19 +44,35 @@ public class ClienteController {
 	public String modificarCliente(@RequestParam long id, Model model) {
 
 		Cliente cliente = repClientes.findByIdCliente(id);
+		clienteEditando = cliente;
 
 		model.addAttribute("cliente", cliente);
 
 		return "modificarCliente";
 	}
-	
+
 	@RequestMapping(value = "/edicionClientes")
 	public String resultadoEdicionCliente(Cliente c) {
 
-		Cliente cliente = repClientes.findByIdCliente(c.getIdCliente());
+		if (!clienteEditando.getNombreCliente().equals(c.getNombreCliente()))
+			clienteEditando.setNombreCliente(c.getNombreCliente());
 
-		repClientes.delete(cliente);
-		repClientes.save(c);
+		if (!clienteEditando.getApellidosCliente().equals(c.getApellidosCliente()))
+			clienteEditando.setApellidosCliente(c.getApellidosCliente());
+
+		if (!clienteEditando.getNifCliente().equals(c.getNifCliente()))
+			clienteEditando.setNifCliente(c.getNifCliente());
+
+		if (clienteEditando.getCpCliente() != c.getCpCliente())
+			clienteEditando.setCpCliente(c.getCpCliente());
+
+		if (!clienteEditando.getMailCliente().equals(c.getMailCliente()))
+			clienteEditando.setMailCliente(c.getMailCliente());
+
+		if (clienteEditando.getTelefonoCliente() != c.getTelefonoCliente())
+			clienteEditando.setTelefonoCliente(c.getTelefonoCliente());
+
+		repClientes.save(clienteEditando);
 
 		return "edicion";
 	}

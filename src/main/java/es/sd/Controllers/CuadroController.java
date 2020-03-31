@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import es.sd.Entities.Autor;
-import es.sd.Entities.Cliente;
 import es.sd.Entities.Cuadro;
 import es.sd.Repositories.AutorRepository;
 import es.sd.Repositories.ClienteRepository;
@@ -17,13 +16,15 @@ import es.sd.Repositories.CuadroRepository;
 public class CuadroController {
 
 	@Autowired
-	CuadroRepository repCuadros;
+	private CuadroRepository repCuadros;
 
 	@Autowired
-	AutorRepository repAutores;
+	private AutorRepository repAutores;
 
 	@Autowired
-	ClienteRepository repClientes;
+	private ClienteRepository repClientes;
+
+	private Cuadro cuadroEditando;
 
 	@RequestMapping(value = "/cuadros")
 	public String cuadros(Model model) {
@@ -63,8 +64,9 @@ public class CuadroController {
 	public String modificarCuadro(@RequestParam long id, Model model) {
 
 		Cuadro cuadro = repCuadros.findByIdCuadro(id);
+		cuadroEditando = cuadro;
 		List<Autor> autores = repAutores.findAll();
-		
+
 		model.addAttribute("cuadro", cuadro);
 		model.addAttribute("autores", autores);
 
@@ -84,31 +86,33 @@ public class CuadroController {
 	@RequestMapping(value = "/edicionCuadros")
 	public String resultadoEdicionCuadro(@RequestParam String nombreAutor, Cuadro c) {
 
-		Cuadro cuadro = repCuadros.findByIdCuadro(c.getIdCuadro());
-		repCuadros.delete(cuadro);
+		if (!cuadroEditando.getTituloCuadro().equals(c.getTituloCuadro()))
+			cuadroEditando.setTituloCuadro(c.getTituloCuadro());
 
-		Autor autororiginal = repAutores.findByNifAutor(cuadro.getAutor().getNifAutor());
-		autororiginal.getCuadrosCreados().remove(cuadro);
+		if (!cuadroEditando.getDescripcionCuadro().equals(c.getDescripcionCuadro()))
+			cuadroEditando.setDescripcionCuadro(c.getDescripcionCuadro());
 
-		Autor a = repAutores.findByNombreAutor(nombreAutor);
-		if (!autororiginal.getNifAutor().equals(a.getNifAutor()))
-			repAutores.save(autororiginal);
-		else
-			repAutores.delete(autororiginal);
+		if (cuadroEditando.getAnoFinCuadro() != c.getAnoFinCuadro())
+			cuadroEditando.setAnoFinCuadro(c.getAnoFinCuadro());
 
-		/*
-		 * Cliente cliente =
-		 * repClientes.findByNifCliente(cuadro.getComprador().getNifCliente()); if
-		 * (cliente != null) {
-		 * 
-		 * }
-		 */
+		if (cuadroEditando.getAnchoCuadro() != c.getAnchoCuadro())
+			cuadroEditando.setAnchoCuadro(c.getAnchoCuadro());
 
-		c.setAutor(a);
-		repCuadros.save(c);
+		if (cuadroEditando.getAltoCuadro() != c.getAltoCuadro())
+			cuadroEditando.setAltoCuadro(c.getAltoCuadro());
 
-		a.getCuadrosCreados().add(c);
-		repAutores.save(a);
+		if (cuadroEditando.getPrecioCuadro() != c.getPrecioCuadro())
+			cuadroEditando.setPrecioCuadro(c.getPrecioCuadro());
+
+		if (!cuadroEditando.getAutor().getNombreAutor().equals(nombreAutor)) {
+			Autor a = repAutores.findByNombreAutor(nombreAutor);
+			cuadroEditando.setAutor(a);
+			repCuadros.save(cuadroEditando);
+
+			a.getCuadrosCreados().add(cuadroEditando);
+			repAutores.save(a);
+		} else
+			repCuadros.save(cuadroEditando);
 
 		return "edicion";
 	}

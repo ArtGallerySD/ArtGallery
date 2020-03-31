@@ -18,13 +18,13 @@ import es.sd.Repositories.CuadroRepository;
 public class HomeController {
 
 	@Autowired
-	CuadroRepository repCuadros;
+	private CuadroRepository repCuadros;
 
 	@Autowired
-	AutorRepository repAutores;
+	private AutorRepository repAutores;
 
 	@Autowired
-	ClienteRepository repClientes;
+	private ClienteRepository repClientes;
 
 	@PostConstruct
 	public void construirBD() {
