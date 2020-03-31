@@ -37,14 +37,14 @@ public class HomeController {
 
 		Cuadro cuadro1 = new Cuadro("Visita de la noche", "Bastante desgastado", 2017, 30.52, 26.88, 3000);
 		cuadro1.setAutor(autor1);
-		LocalDate local = LocalDate.of(2020, 01, 12);
-		Date fecha = Date.valueOf(local);
-		cuadro1.setFechaVenta(fecha);
 		repCuadros.save(cuadro1);
 
 		autor1.getCuadrosCreados().add(cuadro1);
 		repAutores.save(autor1);
 
+		LocalDate local = LocalDate.of(2020, 01, 12);
+		Date fecha = Date.valueOf(local);
+		cuadro1.setFechaVenta(fecha);
 		cuadro1.setComprador(cliente1);
 		cliente1.getCuadrosComprados().add(cuadro1);
 		repCuadros.save(cuadro1);

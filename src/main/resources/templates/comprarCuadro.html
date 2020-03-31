@@ -41,7 +41,8 @@
 			class="border js-fullheight">
 
 			<h1 id="fh5co-logo">
-				<a href="/"><img src="/images/logo.png" width="250px" height="100px"></a>
+				<a href="/"><img src="/images/logo.png" width="250px"
+					height="100px"></a>
 			</h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
@@ -54,71 +55,46 @@
 			</nav>
 		</aside>
 
+
 		<div id="fh5co-main">
-			<div class="fh5co-narrow-content animate-box"
-				data-animate-effect="fadeInLeft">
+			<aside id="fh5co-hero" class="js-fullheight">
+				<div class="flexslider js-fullheight">
+					<ul class="slides">
 
-				<div class="row">
-					<div class="col-md-4">
-						<h2>Registro Cuadros</h2>
-					</div>
-				</div>
+						<li style="background-image: url(/images/comprar.jpg);">
+							<div class="overlay"></div>
+							<div class="container-fluid">
 
-				<form action="/registroCuadros">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-6">
+								<div class="row">
+									<div
+										class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+										<div class="slider-text-inner">
 
-									<div class="form-group">
-										<input type="text" name="tituloCuadro" class="form-control"
-											placeholder="Título" required>
-									</div>
-									<div class="form-group">
-										<input type="number" name="anoFinCuadro" class="form-control"
-											placeholder="Año de finalización" required>
-									</div>
-									<div class="form-group">
-										<input type="number" name="anchoCuadro" class="form-control"
-											min="0" step="0.001" placeholder="Anchura" required>
-									</div>
-									<div class="form-group">
-										<input type="number" name="altoCuadro" class="form-control"
-											min="0" step="0.001" placeholder="Altura" required>
-									</div>
+											<form action="/confirmacionCompra">
+												<div class="form-group">
+													<input type="text" name="nifComprador" class="form-control"
+														pattern="[0-9]{8}[A-Za-z]{1}"
+														placeholder="Introduzca su NIF" required>
+												</div>
 
+												<div class="form-group">
+													<input type="submit" class="btn btn-primary btn-learn"
+														value="Comprar">
+												</div>
+											</form>
+
+										</div>
+									</div>
 								</div>
 
-								<div class="col-md-6">
-
-									<div class="form-group">
-										<textarea name="descripcionCuadro" id="message" cols="30"
-											rows="7" class="form-control" placeholder="Descripción"></textarea>
-									</div>
-									<div class="form-group">
-										<input type="number" name="precioCuadro" class="form-control"
-											min="0" placeholder="Precio (€)" required>
-									</div>
-									<div class="form-group">
-										<select name="nombreAutor" class="form-control" required>
-											<option th:if="autor.id != null" th:each="autor : ${autores}"
-												th:value="${autor.nombreAutor}"
-												th:text="${autor.nombreAutor}"></option>
-										</select> <a href="/autores">Darse de alta como autor</a>
-									</div>
-									<div class="form-group">
-										<input type="submit" class="btn btn-primary btn-md"
-											value="Registrar">
-									</div>
-
-								</div>
 							</div>
-						</div>
-					</div>
-				</form>
+						</li>
 
-			</div>
+					</ul>
+				</div>
+			</aside>
 		</div>
+
 	</div>
 
 	<!-- jQuery -->

@@ -1,5 +1,7 @@
 package es.sd.Controllers;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import es.sd.Entities.Autor;
+import es.sd.Entities.Cliente;
 import es.sd.Entities.Cuadro;
 import es.sd.Repositories.AutorRepository;
 import es.sd.Repositories.ClienteRepository;
@@ -25,6 +28,7 @@ public class CuadroController {
 	private ClienteRepository repClientes;
 
 	private Cuadro cuadroEditando;
+	private Cuadro cuadroComprando;
 
 	@RequestMapping(value = "/cuadros")
 	public String cuadros(Model model) {
@@ -78,9 +82,30 @@ public class CuadroController {
 
 		Cuadro cuadro = repCuadros.findByIdCuadro(idCompra);
 
-		model.addAttribute("cuadro", cuadro);
+		cuadroComprando = cuadro;
 
 		return "comprarCuadro";
+	}
+
+	@RequestMapping(value = "/confirmacionCompra")
+	public String confirmacionCompra(@RequestParam String nifComprador, Model model) {
+
+		Cliente cliente = repClientes.findByNifCliente(nifComprador);
+
+		if (cliente != null) {
+			LocalDate fechaActual = LocalDate.now();
+			Date fecha = Date.valueOf(fechaActual);
+			cuadroComprando.setFechaVenta(fecha);
+			cuadroComprando.setComprador(cliente);
+			cliente.getCuadrosComprados().add(cuadroComprando);
+
+			repCuadros.save(cuadroComprando);
+			repClientes.save(cliente);
+
+			return "confirmacion_compra";
+		} else
+			return "fallo_compra";
+
 	}
 
 	@RequestMapping(value = "/edicionCuadros")

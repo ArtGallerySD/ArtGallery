@@ -41,7 +41,8 @@
 			class="border js-fullheight">
 
 			<h1 id="fh5co-logo">
-				<a href="/"><img src="/images/logo.png" width="250px" height="100px"></a>
+				<a href="/"><img src="/images/logo.png" width="250px"
+					height="100px"></a>
 			</h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
@@ -56,33 +57,61 @@
 		</aside>
 
 		<div id="fh5co-main">
-			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading animate-box"
-					data-animate-effect="fadeInLeft">Autores</h2>
+			<div class="fh5co-narrow-content animate-box"
+				data-animate-effect="fadeInLeft">
+				<div class="row">
+					<div class="col-md-6">
+						<h2 class="fh5co-heading">Autores</h2>
+					</div>
 
-				<div class="row row-bottom-padded-md">
-					<div th:each="autor : ${autores}">
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
 
-							<b><span th:text="'Nombre: ' + ${autor.nombreAutor}" /></b><br />
-							<b><span th:text="'Apellidos: ' + ${autor.apellidosAutor}" /></b><br />
-							<b><span th:text="'NIF: ' + ${autor.nifAutor}" /></b><br /> 
-							<b><span th:text="'Año de Nacimiento: ' + ${autor.anoNacimientoAutor}" /></b><br />
-							<b><span th:text="'País de Nacimiento: ' + ${autor.paisNacimientoAutor}" /></b><br />
-							<b><span th:text="'Código Postal: ' + ${autor.cpAutor}" /></b><br />
-							<b><span th:text="'E-mail: ' + ${autor.mailAutor}" /></b><br />
-							<b><span th:text="'Teléfono: ' + ${autor.telefonoAutor}" /></b><br />
-							
-							<a th:href="@{/modificarAutor(id=${autor.idAutor})}">Editar</a><br />
-						
-							<br/>
+					<form action="/edicionCuadros">
+						<div class="col-md-4">
+							<div class="form-group">
+								<select name="filtroAutor" class="form-control" required>
+									<option selected value="1">Mostrar todos</option>
+									<option selected value="2">Mostrar Nombre Ascendente</option>
+									<option selected value="3">Mostrar Apellidos
+										Descendente</option>
+									<option selected value="4">Mostrar NIF Ascendente</option>
+									<option selected value="5">Mostrar E-mail Descendente</option>
+									<option selected value="6">Mostrar Teléfono Ascendente</option>
+								</select>
+							</div>
 						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary btn-md"
+									value="Filtrar">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+
+			<div class="row row-bottom-padded-md">
+				<div th:each="autor : ${autores}">
+					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+
+						<b><span th:text="'Nombre: ' + ${autor.nombreAutor}" /></b><br />
+						<b><span th:text="'Apellidos: ' + ${autor.apellidosAutor}" /></b><br />
+						<b><span th:text="'NIF: ' + ${autor.nifAutor}" /></b><br /> <b><span
+							th:text="'Año de Nacimiento: ' + ${autor.anoNacimientoAutor}" /></b><br />
+						<b><span
+							th:text="'País de Nacimiento: ' + ${autor.paisNacimientoAutor}" /></b><br />
+						<b><span th:text="'Código Postal: ' + ${autor.cpAutor}" /></b><br />
+						<b><span th:text="'E-mail: ' + ${autor.mailAutor}" /></b><br />
+						<b><span th:text="'Teléfono: ' + ${autor.telefonoAutor}" /></b><br />
+						<a th:href="@{/modificarAutor(id=${autor.idAutor})}">Editar</a><br />
+
+						<br />
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
+
 
 	<!-- jQuery -->
 	<script src="/js/jquery.min.js"></script>
@@ -98,7 +127,6 @@
 
 	<!-- MAIN JS -->
 	<script src="/js/main.js"></script>
-
 </body>
 </html>
 

@@ -47,7 +47,7 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li><a href="/">Home</a></li>
-					<li class="fh5co-active"><a href="/cuadros">Cuadros</a></li>
+					<li><a href="/cuadros">Cuadros</a></li>
 					<li><a href="/autores">Autores</a></li>
 					<li><a href="/clientes">Clientes</a></li>
 					<li><a href="/consultas">Consultas y Modificaciones</a></li>
@@ -56,72 +56,33 @@
 		</aside>
 
 		<div id="fh5co-main">
-			<div class="fh5co-narrow-content animate-box"
-				data-animate-effect="fadeInLeft">
+			<aside id="fh5co-hero" class="js-fullheight">
+				<div class="flexslider js-fullheight">
+					<ul class="slides">
 
-				<div class="row">
-					<div class="col-md-4">
-						<h2>Editar Cuadro</h2>
-					</div>
-				</div>
+						<li style="background-image: url(/images/compra_success.jpg);">
+							<div class="overlay"></div>
+							<div class="container-fluid">
 
-				<form action="/edicionCuadros">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-6">
+								<div class="row">
+									<div
+										class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+										<div class="slider-text-inner">
+											<h1>Ha comprado el cuadro con éxito</h1>
 
-									<div class="form-group">
-										<input type="text" name="tituloCuadro" class="form-control"
-											th:value="${cuadro.tituloCuadro}" required>
+											<p>
+												<a class="btn btn-primary btn-learn" href="/">Volver</a>
+											</p>
+										</div>
 									</div>
-									<div class="form-group">
-										<input type="number" name="anoFinCuadro" class="form-control"
-											th:value="${cuadro.anoFinCuadro}" required>
-									</div>
-									<div class="form-group">
-										<input type="text" name="anchoCuadro"
-											pattern="[0-9]+(\.[0-9]+)?" class="form-control"
-											th:value="${cuadro.anchoCuadro}" required>
-									</div>
-									<div class="form-group">
-										<input type="text" name="altoCuadro"
-											pattern="[0-9]+(\.[0-9]+)?" class="form-control"
-											th:value="${cuadro.altoCuadro}" required>
-									</div>
-
 								</div>
 
-								<div class="col-md-6">
-
-									<div class="form-group">
-										<textarea name="descripcionCuadro" id="message" cols="30"
-											rows="7" class="form-control"
-											th:field="${cuadro.descripcionCuadro}"></textarea>
-									</div>
-									<div class="form-group">
-										<input type="number" name="precioCuadro" class="form-control"
-											min="0" th:value="${cuadro.precioCuadro}" required>
-									</div>
-									<div class="form-group">
-										<select name="nombreAutor" th:selected="${cuadro.autor.nombreAutor}" class="form-control" required>
-											<option th:if="autor.id != null" th:each="autor : ${autores}"
-												th:value="${autor.nombreAutor}"
-												th:text="${autor.nombreAutor}"></option>
-										</select> <a href="/autores">Darse de alta como autor</a>
-									</div>
-									<div class="form-group">
-										<input type="submit" class="btn btn-primary btn-md"
-											value="Editar">
-									</div>
-
-								</div>
 							</div>
-						</div>
-					</div>
-				</form>
+						</li>
 
-			</div>
+					</ul>
+				</div>
+			</aside>
 		</div>
 	</div>
 
