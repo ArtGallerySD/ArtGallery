@@ -47,7 +47,7 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li><a href="/">Home</a></li>
-					<li class="fh5co-active"><a href="/cuadros">Cuadros</a></li>
+					<li><a href="/cuadros">Cuadros</a></li>
 					<li><a href="/autores">Autores</a></li>
 					<li><a href="/clientes">Clientes</a></li>
 					<li><a href="/consultas">Consultas y Modificaciones</a></li>
@@ -69,12 +69,14 @@
 									<div
 										class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
 										<div class="slider-text-inner">
-
+										
+											<h1>Introduzca su NIF</h1>
+											
 											<form action="/confirmacionCompra">
-												<div class="form-group">
-													<input type="text" name="nifComprador" class="form-control"
+												<div class="form-group white-box">
+													<input type="text" name="nifComprador" class="form-control white-box"
 														pattern="[0-9]{8}[A-Za-z]{1}"
-														placeholder="Introduzca su NIF" required>
+														placeholder="NIF" required>
 												</div>
 
 												<div class="form-group">
