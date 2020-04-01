@@ -50,7 +50,8 @@
 					<li><a href="/cuadros">Cuadros</a></li>
 					<li><a href="/autores">Autores</a></li>
 					<li><a href="/clientes">Clientes</a></li>
-					<li class="fh5co-active"><a href="/consultas">Consultas y Modificaciones</a></li>
+					<li class="fh5co-active"><a href="/consultas">Consultas y
+							Modificaciones</a></li>
 				</ul>
 			</nav>
 		</aside>
@@ -72,22 +73,38 @@
 								<div class="col-md-6">
 
 									<div class="form-group">
-										<input type="text" name="tituloCuadro" class="form-control"
+										<label for="tituloCuadro">Título</label> <input type="text"
+											id="tituloCuadro" name="tituloCuadro" class="form-control"
 											th:value="${cuadro.tituloCuadro}" required>
 									</div>
 									<div class="form-group">
-										<input type="number" name="anoFinCuadro" class="form-control"
-											th:value="${cuadro.anoFinCuadro}" required>
+										<label for="anoFinCuadro">Año de finalización</label> <input
+											type="number" id="anoFinCuadro" name="anoFinCuadro"
+											class="form-control" th:value="${cuadro.anoFinCuadro}"
+											required>
 									</div>
 									<div class="form-group">
-										<input type="text" name="anchoCuadro"
+										<label for="anchoCuadro">Ancho</label> <input type="text"
+											id="anchoCuadro" name="anchoCuadro"
 											pattern="[0-9]+(\.[0-9]+)?" class="form-control"
 											th:value="${cuadro.anchoCuadro}" required>
 									</div>
 									<div class="form-group">
-										<input type="text" name="altoCuadro"
-											pattern="[0-9]+(\.[0-9]+)?" class="form-control"
-											th:value="${cuadro.altoCuadro}" required>
+										<label for="altoCuadro">Alto</label> <input type="text"
+											id="altoCuadro" name="altoCuadro" pattern="[0-9]+(\.[0-9]+)?"
+											class="form-control" th:value="${cuadro.altoCuadro}" required>
+									</div>
+
+									<div class="form-group" th:if="${cuadro.comprador} != null">
+										<label for="nombreComprador">Comprador</label> <select
+											id="nombreComprador" name="nombreComprador"
+											class="form-control">
+											<option th:if="cliente.idCliente != null"
+												th:each="cliente : ${clientes}"
+												th:value="${cliente.nombreCliente}"
+												th:text="${cliente.nombreCliente}"
+												th:selected="${cliente.idCliente == cuadro.comprador.idCliente}"></option>
+										</select>
 									</div>
 
 								</div>
@@ -95,24 +112,42 @@
 								<div class="col-md-6">
 
 									<div class="form-group">
-										<textarea name="descripcionCuadro" id="message" cols="30"
-											rows="7" class="form-control"
+										<label for="descripcionCuadro">Descripción</label>
+										<textarea id="descripcionCuadro" name="descripcionCuadro"
+											cols="30" rows="4" class="form-control"
 											th:field="${cuadro.descripcionCuadro}"></textarea>
 									</div>
 									<div class="form-group">
-										<input type="number" name="precioCuadro" class="form-control"
+										<label for="precioCuadro">Precio</label> <input type="number"
+											id="precioCuadro" name="precioCuadro" class="form-control"
 											min="0" th:value="${cuadro.precioCuadro}" required>
 									</div>
 									<div class="form-group">
-										<select name="nombreAutor" th:selected="${cuadro.autor.nombreAutor}" class="form-control" required>
-											<option th:if="autor.id != null" th:each="autor : ${autores}"
-												th:value="${autor.nombreAutor}"
-												th:text="${autor.nombreAutor}"></option>
+										<label for="nombreAutor">Autor</label> <select
+											id="nombreAutor" name="nombreAutor" class="form-control"
+											required>
+											<option th:if="autor.idAutor != null"
+												th:each="autor : ${autores}" th:value="${autor.nombreAutor}"
+												th:text="${autor.nombreAutor}"
+												th:selected="${autor.idAutor == cuadro.autor.idAutor}"></option>
 										</select> <a href="/autores">Darse de alta como autor</a>
 									</div>
-									<div class="form-group">
-										<input type="submit" class="btn btn-primary btn-md"
-											value="Editar">
+
+									<div class="form-group" th:if="${cuadro.fechaVenta} != null">
+										<label for="fechaVenta">Fecha de Venta</label> <input
+											type="date" id="fechaVenta" name="fechaVenta"
+											class="form-control" th:value="${cuadro.fechaVenta}">
+									</div>
+
+									<div class="row">
+										<div class="col-md-3 form-group">
+											<input type="submit" class="btn btn-primary btn-md"
+												value="Editar">
+										</div>
+
+										<div class="col-md-3 form-group">
+											<a class="btn btn-primary btn-learn" href="/consultasCuadros">Cancelar</a>
+										</div>
 									</div>
 
 								</div>

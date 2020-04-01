@@ -50,7 +50,8 @@
 					<li><a href="/cuadros">Cuadros</a></li>
 					<li><a href="/autores">Autores</a></li>
 					<li><a href="/clientes">Clientes</a></li>
-					<li class="fh5co-active"><a href="/consultas">Consultas y Modificaciones</a></li>
+					<li class="fh5co-active"><a href="/consultas">Consultas y
+							Modificaciones</a></li>
 				</ul>
 			</nav>
 		</aside>
@@ -72,22 +73,27 @@
 								<div class="col-md-6">
 
 									<div class="form-group">
-										<input type="text" name="nombreAutor" class="form-control"
+										<label for="nombreAutor">Nombre</label> <input type="text"
+											id="nombreAutor" name="nombreAutor" class="form-control"
 											th:value="${autor.nombreAutor}" required>
 									</div>
 									<div class="form-group">
-										<input type="text" name="apellidosAutor" class="form-control"
-											th:value="${autor.apellidosAutor}" required>
+										<label for="apellidosAutor">Apellidos</label> <input
+											type="text" id="apellidosAutor" name="apellidosAutor"
+											class="form-control" th:value="${autor.apellidosAutor}"
+											required>
 									</div>
 									<div class="form-group">
-										<input type="text" name="nifAutor" class="form-control"
+										<label for="nifAutor">NIF</label> <input type="text"
+											id="nifAutor" name="nifAutor" class="form-control"
 											th:value="${autor.nifAutor}" pattern="[0-9]{8}[A-Za-z]{1}"
 											required>
 									</div>
 									<div class="form-group">
-										<input type="number" name="anoNacimientoAutor"
-											class="form-control" min="1900" max="2021"
-											th:value="${autor.anoNacimientoAutor}" required>
+										<label for="anoNacimientoAutor">Año de nacimiento</label> <input
+											type="number" id="anoNacimientoAutor"
+											name="anoNacimientoAutor" class="form-control" min="1900"
+											max="2021" th:value="${autor.anoNacimientoAutor}" required>
 									</div>
 
 								</div>
@@ -95,26 +101,37 @@
 								<div class="col-md-6">
 
 									<div class="form-group">
-										<input type="text" name="paisNacimientoAutor"
-											class="form-control" th:value="${autor.paisNacimientoAutor}"
-											required>
+										<label for="paisNacimientoAutor">País de nacimiento</label> <input
+											type="text" id="paisNacimientoAutor"
+											name="paisNacimientoAutor" class="form-control"
+											th:value="${autor.paisNacimientoAutor}" required>
 									</div>
 									<div class="form-group">
-										<input type="text" name="cpAutor" class="form-control"
+										<label for="cpAutor">Código Postal</label> <input type="text"
+											id="cpAutor" name="cpAutor" class="form-control"
 											pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}"
 											th:value="${autor.cpAutor}" required>
 									</div>
 									<div class="form-group">
-										<input type="email" name="mailAutor" class="form-control"
+										<label for="mailAutor">E-mail</label> <input type="email"
+											id="mailAutor" name="mailAutor" class="form-control"
 											th:value="${autor.mailAutor}" required>
 									</div>
 									<div class="form-group">
-										<input type="text" name="telefonoAutor" class="form-control"
+										<label for="telefonoAutor">Teléfono</label> <input type="text"
+											id="telefonoAutor" name="telefonoAutor" class="form-control"
 											pattern="[0-9]{9}" th:value="${autor.telefonoAutor}" required>
 									</div>
-									<div class="form-group">
-										<input type="submit" class="btn btn-primary btn-md"
-											value="Editar">
+
+									<div class="row">
+										<div class="col-md-3 form-group">
+											<input type="submit" class="btn btn-primary btn-md"
+												value="Editar">
+										</div>
+
+										<div class="col-md-3 form-group">
+											<a class="btn btn-primary btn-learn" href="/consultasAutores">Cancelar</a>
+										</div>
 									</div>
 
 								</div>

@@ -3,6 +3,8 @@ package es.sd.Controllers;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,9 +72,11 @@ public class CuadroController {
 		Cuadro cuadro = repCuadros.findByIdCuadro(id);
 		cuadroEditando = cuadro;
 		List<Autor> autores = repAutores.findAll();
+		List<Cliente> clientes = repClientes.findAll();
 
 		model.addAttribute("cuadro", cuadro);
 		model.addAttribute("autores", autores);
+		model.addAttribute("clientes", clientes);
 
 		return "modificarCuadro";
 	}
@@ -109,7 +113,9 @@ public class CuadroController {
 	}
 
 	@RequestMapping(value = "/edicionCuadros")
-	public String resultadoEdicionCuadro(@RequestParam String nombreAutor, Cuadro c) {
+	public String resultadoEdicionCuadro(@RequestParam String nombreAutor,
+			@RequestParam Optional<String> nombreComprador, @RequestParam Optional<java.sql.Date> fechaVenta,
+			Cuadro c) {
 
 		if (!cuadroEditando.getTituloCuadro().equals(c.getTituloCuadro()))
 			cuadroEditando.setTituloCuadro(c.getTituloCuadro());
@@ -130,14 +136,38 @@ public class CuadroController {
 			cuadroEditando.setPrecioCuadro(c.getPrecioCuadro());
 
 		if (!cuadroEditando.getAutor().getNombreAutor().equals(nombreAutor)) {
-			Autor a = repAutores.findByNombreAutor(nombreAutor);
-			cuadroEditando.setAutor(a);
+
+			Autor autorAntiguo = repAutores.findByNifAutor(cuadroEditando.getAutor().getNifAutor());
+			autorAntiguo.getCuadrosCreados().remove(cuadroEditando);
+			repAutores.save(autorAntiguo);
+
+			Autor autorActual = repAutores.findByNombreAutor(nombreAutor);
+			cuadroEditando.setAutor(autorActual);
 			repCuadros.save(cuadroEditando);
 
-			a.getCuadrosCreados().add(cuadroEditando);
-			repAutores.save(a);
+			autorActual.getCuadrosCreados().add(cuadroEditando);
+			repAutores.save(autorActual);
+
 		} else
 			repCuadros.save(cuadroEditando);
+
+		if (nombreComprador.isPresent() || fechaVenta.isPresent()) {
+			if ((!cuadroEditando.getComprador().getNombreCliente().equals(nombreComprador.get()))
+					|| (cuadroEditando.getFechaVenta().compareTo(fechaVenta.get()) != 0)) {
+
+				Cliente compradorAntiguo = repClientes.findByNifCliente(cuadroEditando.getComprador().getNifCliente());
+				compradorAntiguo.getCuadrosComprados().remove(cuadroEditando);
+				repClientes.save(compradorAntiguo);
+
+				Cliente compradorActual = repClientes.findByNombreCliente(nombreComprador.get());
+				cuadroEditando.setComprador(compradorActual);
+				cuadroEditando.setFechaVenta(fechaVenta.get());
+				compradorActual.getCuadrosComprados().add(cuadroEditando);
+				repCuadros.save(cuadroEditando);
+				repClientes.save(compradorActual);
+
+			}
+		}
 
 		return "edicion";
 	}

@@ -41,7 +41,8 @@
 			class="border js-fullheight">
 
 			<h1 id="fh5co-logo">
-				<a href="/"><img src="/images/logo.png" width="250px" height="100px"></a>
+				<a href="/"><img src="/images/logo.png" width="250px"
+					height="100px"></a>
 			</h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
@@ -56,7 +57,9 @@
 		</aside>
 
 		<div id="fh5co-main">
+
 			<div class="fh5co-narrow-content">
+
 				<h2 class="fh5co-heading animate-box"
 					data-animate-effect="fadeInLeft">Cuadros</h2>
 
@@ -65,32 +68,52 @@
 						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
 
 							<b><span th:text="'Título: ' + ${cuadro.tituloCuadro}" /></b><br />
-							<b><span th:text="'Descripción: ' + ${cuadro.descripcionCuadro}" /></b><br />
-							<b><span th:text="'Año de Finalización: ' + ${cuadro.anoFinCuadro}" /></b><br /> 
+							<b><span
+								th:text="'Descripción: ' + ${cuadro.descripcionCuadro}" /></b><br />
+							<b><span
+								th:text="'Año de Finalización: ' + ${cuadro.anoFinCuadro}" /></b><br />
 							<b><span th:text="'Ancho: ' + ${cuadro.anchoCuadro}" /></b><br />
 							<b><span th:text="'Alto: ' + ${cuadro.altoCuadro}" /></b><br />
 							<b><span th:text="'Precio: ' + ${cuadro.precioCuadro}" /></b><br />
 							<b><span th:text="'Autor: ' + ${cuadro.autor.nombreAutor}" /></b><br />
-							
+
 							<div th:if="${cuadro.fechaVenta} != null">
-								<b><span th:text="'Comprador: ' + ${cuadro.comprador.nombreCliente}" /></b><br />
+								<b><span
+									th:text="'Comprador: ' + ${cuadro.comprador.nombreCliente}" /></b><br />
 								<b><span th:text="'Fecha de Venta: ' + ${cuadro.fechaVenta}" /></b><br />
 							</div>
-							
+
 							<div th:if="${cuadro.comprador} == null">
-								<b><span th:text="'Cuadro sin propietario'"/></b><br />
-								<a th:href="@{/comprarCuadro(idCompra=${cuadro.idCuadro})}">Comprar</a><br />
+								<b><span th:text="'Cuadro sin propietario'" /></b><br /> <a
+									th:href="@{/comprarCuadro(idCompra=${cuadro.idCuadro})}">Comprar</a><br />
 							</div>
-							
+
 							<a th:href="@{/modificarCuadro(id=${cuadro.idCuadro})}">Editar</a><br />
-							
-							<br/>
+
+							<br />
 						</div>
 					</div>
 				</div>
 
+				<div class="fh5co-narrow-content animate-box"
+					data-animate-effect="fadeInUp">
+
+					<div class="row">
+						<div class="col-md-12 text-center slider-text">
+							<div class="slider-text-inner">
+								<p>
+									<a class="btn btn-primary btn-learn" href="/consultas">Volver</a>
+								</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
 			</div>
+
 		</div>
+
 	</div>
 
 	<!-- jQuery -->

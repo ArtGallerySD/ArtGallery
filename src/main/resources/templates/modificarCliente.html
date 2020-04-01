@@ -50,7 +50,8 @@
 					<li><a href="/cuadros">Cuadros</a></li>
 					<li><a href="/autores">Autores</a></li>
 					<li><a href="/clientes">Clientes</a></li>
-					<li class="fh5co-active"><a href="/consultas">Consultas y Modificaciones</a></li>
+					<li class="fh5co-active"><a href="/consultas">Consultas y
+							Modificaciones</a></li>
 				</ul>
 			</nav>
 		</aside>
@@ -72,23 +73,21 @@
 								<div class="col-md-6">
 
 									<div class="form-group">
-										<input type="text" name="nombreCliente" class="form-control"
+										<label for="nombreCliente">Nombre</label> <input type="text"
+											id="nombreCliente" name="nombreCliente" class="form-control"
 											th:value="${cliente.nombreCliente}" required>
 									</div>
 									<div class="form-group">
-										<input type="text" name="apellidosCliente"
+										<label for="apellidosCliente">Apellidos</label> <input
+											type="text" id="apellidosCliente" name="apellidosCliente"
 											class="form-control" th:value="${cliente.apellidosCliente}"
 											required>
 									</div>
 									<div class="form-group">
-										<input type="text" name="nifCliente" class="form-control"
+										<label for="nifCliente">NIF</label> <input type="text"
+											id="nifCliente" name="nifCliente" class="form-control"
 											pattern="[0-9]{8}[A-Za-z]{1}"
 											th:value="${cliente.nifCliente}" required>
-									</div>
-									<div class="form-group">
-										<input type="text" name="cpCliente" class="form-control"
-											pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}"
-											th:value="${cliente.cpCliente}" required>
 									</div>
 
 								</div>
@@ -96,17 +95,35 @@
 								<div class="col-md-6">
 
 									<div class="form-group">
-										<input type="email" name="mailCliente" class="form-control"
+										<label for="cpCliente">Código Postal</label> <input
+											type="text" id="cpCliente" name="cpCliente"
+											class="form-control"
+											pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}"
+											th:value="${cliente.cpCliente}" required>
+									</div>
+
+									<div class="form-group">
+										<label for="mailCliente">E-mail</label> <input type="email"
+											id="mailCliente" name="mailCliente" class="form-control"
 											th:value="${cliente.mailCliente}" required>
 									</div>
 									<div class="form-group">
-										<input type="text" name="telefonoCliente" class="form-control"
-											pattern="[0-9]{9}" th:value="${cliente.telefonoCliente}"
-											required>
+										<label for="telefonoCliente">Teléfono</label> <input
+											type="text" id="telefonoCliente" name="telefonoCliente"
+											class="form-control" pattern="[0-9]{9}"
+											th:value="${cliente.telefonoCliente}" required>
 									</div>
-									<div class="form-group">
-										<input type="submit" class="btn btn-primary btn-md"
-											value="Editar">
+
+									<div class="row">
+										<div class="col-md-3 form-group">
+											<input type="submit" class="btn btn-primary btn-md"
+												value="Editar">
+										</div>
+
+										<div class="col-md-3 form-group">
+											<a class="btn btn-primary btn-learn"
+												href="/consultasClientes">Cancelar</a>
+										</div>
 									</div>
 
 								</div>
