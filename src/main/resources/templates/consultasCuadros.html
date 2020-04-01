@@ -72,9 +72,9 @@
 								th:text="'Descripción: ' + ${cuadro.descripcionCuadro}" /></b><br />
 							<b><span
 								th:text="'Año de Finalización: ' + ${cuadro.anoFinCuadro}" /></b><br />
-							<b><span th:text="'Ancho: ' + ${cuadro.anchoCuadro}" /></b><br />
-							<b><span th:text="'Alto: ' + ${cuadro.altoCuadro}" /></b><br />
-							<b><span th:text="'Precio: ' + ${cuadro.precioCuadro}" /></b><br />
+							<b><span th:text="'Ancho: ' + ${cuadro.anchoCuadro} + ' cm'" /></b><br />
+							<b><span th:text="'Alto: ' + ${cuadro.altoCuadro} + ' cm'" /></b><br />
+							<b><span th:text="'Precio: ' + ${cuadro.precioCuadro} + ' €'" /></b><br />
 							<b><span th:text="'Autor: ' + ${cuadro.autor.nombreAutor}" /></b><br />
 
 							<div th:if="${cuadro.fechaVenta} != null">
