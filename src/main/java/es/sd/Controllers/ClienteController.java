@@ -17,10 +17,14 @@ public class ClienteController {
 
 	private Cliente clienteEditando;
 
+	// MAPEO DEL MÓDULO DE CLIENTES
+
 	@RequestMapping(value = "/clientes")
 	public String clientes(Model model) {
 		return "clientes";
 	}
+
+	// REGISTRO DE CLIENTES
 
 	@RequestMapping(value = "/registroClientes")
 	public String registrarCliente(@RequestParam String nifCliente, @RequestParam String mailCliente,
@@ -36,6 +40,8 @@ public class ClienteController {
 
 	}
 
+	// CONSULTAS, FILTROS Y ORDENACIÓN DE CLIENTES
+
 	@RequestMapping(value = "/consultasClientes")
 	public String mostrarClientes(Model model) {
 
@@ -45,6 +51,72 @@ public class ClienteController {
 
 		return "consultasClientes";
 	}
+
+	@RequestMapping(value = "/ordenarClientes")
+	public String ordenarClientes(@RequestParam int ordenCliente, Model model) {
+
+		switch (ordenCliente) {
+		case 0:
+			List<Cliente> clientes0 = repClientes.findAll();
+			model.addAttribute("clientes", clientes0);
+			break;
+		case 1:
+			List<Cliente> clientes1 = repClientes.findAllByOrderByNombreClienteAsc();
+			model.addAttribute("clientes", clientes1);
+			break;
+		case 2:
+			List<Cliente> clientes2 = repClientes.findAllByOrderByNombreClienteDesc();
+			model.addAttribute("clientes", clientes2);
+			break;
+		case 3:
+			List<Cliente> clientes3 = repClientes.findAllByOrderByApellidosClienteAsc();
+			model.addAttribute("clientes", clientes3);
+			break;
+		case 4:
+			List<Cliente> clientes4 = repClientes.findAllByOrderByApellidosClienteDesc();
+			model.addAttribute("clientes", clientes4);
+			break;
+		case 5:
+			List<Cliente> clientes5 = repClientes.findAllByOrderByNifClienteAsc();
+			model.addAttribute("clientes", clientes5);
+			break;
+		case 6:
+			List<Cliente> clientes6 = repClientes.findAllByOrderByNifClienteDesc();
+			model.addAttribute("clientes", clientes6);
+			break;
+		case 7:
+			List<Cliente> clientes7 = repClientes.findAllByOrderByCpClienteAsc();
+			model.addAttribute("clientes", clientes7);
+			break;
+		case 8:
+			List<Cliente> clientes8 = repClientes.findAllByOrderByCpClienteDesc();
+			model.addAttribute("clientes", clientes8);
+			break;
+		case 9:
+			List<Cliente> clientes9 = repClientes.findAllByOrderByMailClienteAsc();
+			model.addAttribute("clientes", clientes9);
+			break;
+		case 10:
+			List<Cliente> clientes10 = repClientes.findAllByOrderByMailClienteDesc();
+			model.addAttribute("clientes", clientes10);
+			break;
+		case 11:
+			List<Cliente> clientes11 = repClientes.findAllByOrderByTelefonoClienteAsc();
+			model.addAttribute("clientes", clientes11);
+			break;
+		case 12:
+			List<Cliente> clientes12 = repClientes.findAllByOrderByTelefonoClienteDesc();
+			model.addAttribute("clientes", clientes12);
+			break;
+		default:
+			List<Cliente> clientesDefault = repClientes.findAll();
+			model.addAttribute("autores", clientesDefault);
+		}
+
+		return "consultasClientes";
+	}
+
+	// MODIFICACIONES A CLIENTES
 
 	@RequestMapping(value = "/modificarCliente")
 	public String modificarCliente(@RequestParam long id, Model model) {

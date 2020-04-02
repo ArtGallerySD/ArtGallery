@@ -58,48 +58,79 @@
 
 		<div id="fh5co-main">
 
-			<div class="fh5co-narrow-content">
-
-				<h2 class="fh5co-heading animate-box"
-					data-animate-effect="fadeInLeft">Clientes</h2>
-
-				<div class="row row-bottom-padded-md">
-					<div th:each="cliente : ${clientes}">
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-
-							<b><span th:text="'Nombre: ' + ${cliente.nombreCliente}" /></b><br />
-							<b><span
-								th:text="'Apellidos: ' + ${cliente.apellidosCliente}" /></b><br />
-							<b><span th:text="'NIF: ' + ${cliente.nifCliente}" /></b><br />
-							<b><span th:text="'Código Postal: ' + ${cliente.cpCliente}" /></b><br />
-							<b><span th:text="'E-mail: ' + ${cliente.mailCliente}" /></b><br />
-							<b><span th:text="'Teléfono: ' + ${cliente.telefonoCliente}" /></b><br />
-
-							<a th:href="@{/modificarCliente(id=${cliente.idCliente})}">Editar</a><br />
-
-							<br />
-						</div>
+			<div class="fh5co-narrow-content animate-box"
+				data-animate-effect="fadeInLeft">
+				<div class="row">
+					<div class="col-md-6">
+						<h2 class="fh5co-heading">Clientes</h2>
 					</div>
-				</div>
 
-				<div class="fh5co-narrow-content animate-box"
-					data-animate-effect="fadeInUp">
-
-					<div class="row">
-						<div class="col-md-12 text-center slider-text">
-							<div class="slider-text-inner">
-								<p>
-									<a class="btn btn-primary btn-learn" href="/consultas">Volver</a>
-								</p>
+					<form action="/ordenarClientes">
+						<div class="col-md-4">
+							<div class="form-group">
+								<select name="ordenCliente" class="form-control" required>
+									<option selected value="0">Mostrar Todos</option>
+									<option value="1">Ordenar Todos Nombre Ascendente</option>
+									<option value="2">Ordenar Todos Nombre Descendente</option>
+									<option value="3">Ordenar Todos Apellidos Ascendente</option>
+									<option value="4">Ordenar Todos Apellidos Descendente</option>
+									<option value="5">Ordenar Todos NIF Ascendente</option>
+									<option value="6">Ordenar Todos NIF Descendente</option>
+									<option value="7">Ordenar Todos CP Ascendente</option>
+									<option value="8">Ordenar Todos CP Descendente</option>
+									<option value="9">Ordenar Todos E-mail Ascendente</option>
+									<option value="10">Ordenar Todos E-mail Descendente</option>
+									<option value="11">Ordenar Todos Teléfono Ascendente</option>
+									<option value="12">Ordenar Todos Teléfono Descendente</option>
+								</select>
 							</div>
 						</div>
-					</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary btn-md"
+									value="Ordenar">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 
+			<div class="row row-bottom-padded-md">
+				<div th:each="cliente : ${clientes}">
+					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+
+						<b><span th:text="'Nombre: ' + ${cliente.nombreCliente}" /></b><br />
+						<b><span th:text="'Apellidos: ' + ${cliente.apellidosCliente}" /></b><br />
+						<b><span th:text="'NIF: ' + ${cliente.nifCliente}" /></b><br />
+						<b><span th:text="'Código Postal: ' + ${cliente.cpCliente}" /></b><br />
+						<b><span th:text="'E-mail: ' + ${cliente.mailCliente}" /></b><br />
+						<b><span th:text="'Teléfono: ' + ${cliente.telefonoCliente}" /></b><br />
+
+						<a th:href="@{/modificarCliente(id=${cliente.idCliente})}">Editar</a><br />
+
+						<br />
+					</div>
+				</div>
+			</div>
+
+			<div class="fh5co-narrow-content animate-box"
+				data-animate-effect="fadeInUp">
+
+				<div class="row">
+					<div class="col-md-12 text-center slider-text">
+						<div class="slider-text-inner">
+							<p>
+								<a class="btn btn-primary btn-learn" href="/consultas">Volver</a>
+							</p>
+						</div>
+					</div>
 				</div>
 
 			</div>
 
 		</div>
+
+	</div>
 
 	</div>
 

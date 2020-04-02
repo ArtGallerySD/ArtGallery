@@ -65,25 +65,34 @@
 						<h2 class="fh5co-heading">Autores</h2>
 					</div>
 
-
-					<form action="/edicionCuadros">
+					<form action="/ordenarAutores">
 						<div class="col-md-4">
 							<div class="form-group">
-								<select name="filtroAutor" class="form-control" required>
-									<option selected value="1">Mostrar todos</option>
-									<option selected value="2">Mostrar Nombre Ascendente</option>
-									<option selected value="3">Mostrar Apellidos
-										Descendente</option>
-									<option selected value="4">Mostrar NIF Ascendente</option>
-									<option selected value="5">Mostrar E-mail Descendente</option>
-									<option selected value="6">Mostrar Teléfono Ascendente</option>
+								<select name="ordenAutor" class="form-control" required>
+									<option selected value="0">Mostrar Todos</option>
+									<option value="1">Ordenar Todos Nombre Ascendente</option>
+									<option value="2">Ordenar Todos Nombre Descendente</option>
+									<option value="3">Ordenar Todos Apellidos Ascendente</option>
+									<option value="4">Ordenar Todos Apellidos Descendente</option>
+									<option value="5">Ordenar Todos NIF Ascendente</option>
+									<option value="6">Ordenar Todos NIF Descendente</option>
+									<option value="7">Ordenar Todos Nacimiento Ascendente</option>
+									<option value="8">Ordenar Todos Nacimiento Descendente</option>
+									<option value="9">Ordenar Todos País Ascendente</option>
+									<option value="10">Ordenar Todos País Descendente</option>
+									<option value="11">Ordenar Todos CP Ascendente</option>
+									<option value="12">Ordenar Todos CP Descendente</option>
+									<option value="13">Ordenar Todos E-mail Ascendente</option>
+									<option value="14">Ordenar Todos E-mail Descendente</option>
+									<option value="15">Ordenar Todos Teléfono Ascendente</option>
+									<option value="16">Ordenar Todos Teléfono Descendente</option>
 								</select>
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
 								<input type="submit" class="btn btn-primary btn-md"
-									value="Filtrar">
+									value="Ordenar">
 							</div>
 						</div>
 					</form>

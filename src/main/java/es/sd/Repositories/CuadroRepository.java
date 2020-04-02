@@ -35,40 +35,40 @@ public interface CuadroRepository extends JpaRepository<Cuadro, Long> {
 
 	// Data base order methods
 
-	List<Autor> findAllByOrderByTituloCuadroAsc();
+	List<Cuadro> findAllByOrderByTituloCuadroAsc();
 
-	List<Autor> findAllByOrderByTituloCuadroDesc();
+	List<Cuadro> findAllByOrderByTituloCuadroDesc();
 
-	List<Autor> findAllByOrderByDescripcionCuadroAsc();
+	List<Cuadro> findAllByOrderByDescripcionCuadroAsc();
 
-	List<Autor> findAllByOrderByDescripcionCuadroDesc();
+	List<Cuadro> findAllByOrderByDescripcionCuadroDesc();
 
-	List<Autor> findAllByOrderByAnoFinCuadroAsc();
+	List<Cuadro> findAllByOrderByAnoFinCuadroAsc();
 
-	List<Autor> findAllByOrderByAnoFinCuadroDesc();
+	List<Cuadro> findAllByOrderByAnoFinCuadroDesc();
 
-	List<Autor> findAllByOrderByAnchoCuadroAsc();
+	List<Cuadro> findAllByOrderByAnchoCuadroAsc();
 
-	List<Autor> findAllByOrderByAnchoCuadroDesc();
+	List<Cuadro> findAllByOrderByAnchoCuadroDesc();
 
-	List<Autor> findAllByOrderByAltoCuadroAsc();
+	List<Cuadro> findAllByOrderByAltoCuadroAsc();
 
-	List<Autor> findAllByOrderByAltoCuadroDesc();
+	List<Cuadro> findAllByOrderByAltoCuadroDesc();
 
-	List<Autor> findAllByOrderByPrecioCuadroAsc();
+	List<Cuadro> findAllByOrderByPrecioCuadroAsc();
 
-	List<Autor> findAllByOrderByPrecioCuadroDesc();
+	List<Cuadro> findAllByOrderByPrecioCuadroDesc();
 
-	List<Autor> findAllByOrderByFechaVentaAsc();
+	List<Cuadro> findAllByOrderByFechaVentaAsc();
 
-	List<Autor> findAllByOrderByFechaVentaDesc();
+	List<Cuadro> findAllByOrderByFechaVentaDesc();
 
-	List<Autor> findAllByOrderByAutorAsc();
+	List<Cuadro> findAllByOrderByAutorAsc();
 
-	List<Autor> findAllByOrderByAutorDesc();
+	List<Cuadro> findAllByOrderByAutorDesc();
 
-	List<Autor> findAllByOrderByCompradorAsc();
+	List<Cuadro> findAllByOrderByCompradorAsc();
 
-	List<Autor> findAllByOrderByCompradorDesc();
+	List<Cuadro> findAllByOrderByCompradorDesc();
 
 }

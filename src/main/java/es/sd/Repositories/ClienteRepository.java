@@ -2,8 +2,6 @@ package es.sd.Repositories;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import es.sd.Entities.Autor;
 import es.sd.Entities.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
@@ -26,28 +24,28 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 	// Data base order methods
 
-	List<Autor> findAllByOrderByNombreClienteAsc();
+	List<Cliente> findAllByOrderByNombreClienteAsc();
 
-	List<Autor> findAllByOrderByNombreClienteDesc();
+	List<Cliente> findAllByOrderByNombreClienteDesc();
 
-	List<Autor> findAllByOrderByApellidosClienteAsc();
+	List<Cliente> findAllByOrderByApellidosClienteAsc();
 
-	List<Autor> findAllByOrderByApellidosClienteDesc();
+	List<Cliente> findAllByOrderByApellidosClienteDesc();
 
-	List<Autor> findAllByOrderByNifClienteAsc();
+	List<Cliente> findAllByOrderByNifClienteAsc();
 
-	List<Autor> findAllByOrderByNifClienteDesc();
+	List<Cliente> findAllByOrderByNifClienteDesc();
 
-	List<Autor> findAllByOrderByCpClienteAsc();
+	List<Cliente> findAllByOrderByCpClienteAsc();
 
-	List<Autor> findAllByOrderByCpClienteDesc();
+	List<Cliente> findAllByOrderByCpClienteDesc();
 
-	List<Autor> findAllByOrderByMailClienteAsc();
+	List<Cliente> findAllByOrderByMailClienteAsc();
 
-	List<Autor> findAllByOrderByMailClienteDesc();
+	List<Cliente> findAllByOrderByMailClienteDesc();
 
-	List<Autor> findAllByOrderByTelefonoClienteAsc();
+	List<Cliente> findAllByOrderByTelefonoClienteAsc();
 
-	List<Autor> findAllByOrderByTelefonoClienteDesc();
+	List<Cliente> findAllByOrderByTelefonoClienteDesc();
 
 }

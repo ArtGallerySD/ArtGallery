@@ -32,6 +32,8 @@ public class CuadroController {
 	private Cuadro cuadroEditando;
 	private Cuadro cuadroComprando;
 
+	// MAPEO DE CUADROS
+
 	@RequestMapping(value = "/cuadros")
 	public String cuadros(Model model) {
 
@@ -41,6 +43,8 @@ public class CuadroController {
 
 		return "cuadros";
 	}
+
+	// REGISTRO DE CUADROS
 
 	@RequestMapping(value = "/registroCuadros")
 	public String registrarCuadro(@RequestParam String tituloCuadro, @RequestParam String nifAutor, Cuadro cuadro) {
@@ -60,6 +64,8 @@ public class CuadroController {
 
 	}
 
+	// CONSULTAS, FILTROS Y ORDENACIÓN DE CUADROS
+
 	@RequestMapping(value = "/consultasCuadros")
 	public String mostrarCuadros(Model model) {
 
@@ -69,6 +75,96 @@ public class CuadroController {
 
 		return "consultasCuadros";
 	}
+
+	@RequestMapping(value = "/ordenarCuadros")
+	public String ordenarCuadros(@RequestParam int ordenCuadro, Model model) {
+
+		switch (ordenCuadro) {
+		case 0:
+			List<Cuadro> cuadro0 = repCuadros.findAll();
+			model.addAttribute("cuadros", cuadro0);
+			break;
+		case 1:
+			List<Cuadro> cuadros1 = repCuadros.findAllByOrderByTituloCuadroAsc();
+			model.addAttribute("cuadros", cuadros1);
+			break;
+		case 2:
+			List<Cuadro> cuadros2 = repCuadros.findAllByOrderByTituloCuadroDesc();
+			model.addAttribute("cuadros", cuadros2);
+			break;
+		case 3:
+			List<Cuadro> cuadros3 = repCuadros.findAllByOrderByDescripcionCuadroAsc();
+			model.addAttribute("cuadros", cuadros3);
+			break;
+		case 4:
+			List<Cuadro> cuadros4 = repCuadros.findAllByOrderByDescripcionCuadroDesc();
+			model.addAttribute("cuadros", cuadros4);
+			break;
+		case 5:
+			List<Cuadro> cuadros5 = repCuadros.findAllByOrderByAnoFinCuadroAsc();
+			model.addAttribute("cuadros", cuadros5);
+			break;
+		case 6:
+			List<Cuadro> cuadros6 = repCuadros.findAllByOrderByAnoFinCuadroDesc();
+			model.addAttribute("cuadros", cuadros6);
+			break;
+		case 7:
+			List<Cuadro> cuadros7 = repCuadros.findAllByOrderByAnchoCuadroAsc();
+			model.addAttribute("cuadros", cuadros7);
+			break;
+		case 8:
+			List<Cuadro> cuadros8 = repCuadros.findAllByOrderByAnchoCuadroDesc();
+			model.addAttribute("cuadros", cuadros8);
+			break;
+		case 9:
+			List<Cuadro> cuadros9 = repCuadros.findAllByOrderByAltoCuadroAsc();
+			model.addAttribute("cuadros", cuadros9);
+			break;
+		case 10:
+			List<Cuadro> cuadros10 = repCuadros.findAllByOrderByAltoCuadroDesc();
+			model.addAttribute("cuadros", cuadros10);
+			break;
+		case 11:
+			List<Cuadro> cuadros11 = repCuadros.findAllByOrderByPrecioCuadroAsc();
+			model.addAttribute("cuadros", cuadros11);
+			break;
+		case 12:
+			List<Cuadro> cuadros12 = repCuadros.findAllByOrderByPrecioCuadroDesc();
+			model.addAttribute("cuadros", cuadros12);
+			break;
+		case 13:
+			List<Cuadro> cuadros13 = repCuadros.findAllByOrderByFechaVentaAsc();
+			model.addAttribute("cuadros", cuadros13);
+			break;
+		case 14:
+			List<Cuadro> cuadros14 = repCuadros.findAllByOrderByFechaVentaDesc();
+			model.addAttribute("cuadros", cuadros14);
+			break;
+		case 15:
+			List<Cuadro> cuadros15 = repCuadros.findAllByOrderByAutorAsc();
+			model.addAttribute("cuadros", cuadros15);
+			break;
+		case 16:
+			List<Cuadro> cuadros16 = repCuadros.findAllByOrderByAutorDesc();
+			model.addAttribute("cuadros", cuadros16);
+			break;
+		case 17:
+			List<Cuadro> cuadros17 = repCuadros.findAllByOrderByCompradorAsc();
+			model.addAttribute("cuadros", cuadros17);
+			break;
+		case 18:
+			List<Cuadro> cuadros18 = repCuadros.findAllByOrderByCompradorDesc();
+			model.addAttribute("cuadros", cuadros18);
+			break;
+		default:
+			List<Cuadro> cuadrosDefault = repCuadros.findAll();
+			model.addAttribute("cuadros", cuadrosDefault);
+		}
+
+		return "consultasCuadros";
+	}
+
+	// MODIFICACIONES Y COMPRAS DE CUADROS
 
 	@RequestMapping(value = "/modificarCuadro")
 	public String modificarCuadro(@RequestParam long id, Model model) {

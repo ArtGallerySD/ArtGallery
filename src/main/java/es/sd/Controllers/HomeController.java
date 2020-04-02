@@ -26,6 +26,8 @@ public class HomeController {
 	@Autowired
 	private ClienteRepository repClientes;
 
+	// CONSTRUCCIÓN DE LA BASE DE DATOS CON OBJETOS DE ENTIDADES DE EJEMPLO
+
 	@PostConstruct
 	public void construirBD() {
 
@@ -38,7 +40,7 @@ public class HomeController {
 				690511795);
 		repAutores.save(autor2);
 
-		Autor autor3 = new Autor("Marco", "Reinoso", "56749823V", 1998, "España", 28047, "marcoreinoso@art.com",
+		Autor autor3 = new Autor("Marta", "Reinoso", "56749823V", 1998, "España", 28047, "martareinoso@art.com",
 				635489821);
 		repAutores.save(autor3);
 
@@ -184,6 +186,8 @@ public class HomeController {
 		repClientes.save(cliente4);
 
 	}
+
+	// MAPEO DEL INICIO DE LA APLICACIÓN
 
 	@RequestMapping(value = "/")
 	public String home(Model model) {

@@ -58,61 +58,104 @@
 
 		<div id="fh5co-main">
 
-			<div class="fh5co-narrow-content">
+			<div class="fh5co-narrow-content animate-box"
+				data-animate-effect="fadeInLeft">
+				<div class="row">
+					<div class="col-md-6">
+						<h2 class="fh5co-heading">Cuadros</h2>
+					</div>
 
-				<h2 class="fh5co-heading animate-box"
-					data-animate-effect="fadeInLeft">Cuadros</h2>
-
-				<div class="row row-bottom-padded-md">
-					<div th:each="cuadro : ${cuadros}">
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-
-							<b><span th:text="'Título: ' + ${cuadro.tituloCuadro}" /></b><br />
-							<b><span
-								th:text="'Descripción: ' + ${cuadro.descripcionCuadro}" /></b><br />
-							<b><span
-								th:text="'Año de Finalización: ' + ${cuadro.anoFinCuadro}" /></b><br />
-							<b><span th:text="'Ancho: ' + ${cuadro.anchoCuadro} + ' cm'" /></b><br />
-							<b><span th:text="'Alto: ' + ${cuadro.altoCuadro} + ' cm'" /></b><br />
-							<b><span th:text="'Precio: ' + ${cuadro.precioCuadro} + ' €'" /></b><br />
-							<b><span th:text="'Autor: ' + ${cuadro.autor.nombreAutor}" /></b><br />
-
-							<div th:if="${cuadro.fechaVenta} != null">
-								<b><span
-									th:text="'Comprador: ' + ${cuadro.comprador.nombreCliente}" /></b><br />
-								<b><span th:text="'Fecha de Venta: ' + ${cuadro.fechaVenta}" /></b><br />
+					<form action="/ordenarCuadros">
+						<div class="col-md-4">
+							<div class="form-group">
+								<select name="ordenCuadro" class="form-control" required>
+									<option selected value="0">Mostrar Todos</option>
+									<option value="1">Ordenar Todos Título Ascendente</option>
+									<option value="2">Ordenar Todos Título Descendente</option>
+									<option value="3">Ordenar Todos Descripción Ascendente</option>
+									<option value="4">Ordenar Todos Descripción
+										Descendente</option>
+									<option value="5">Ordenar Todos Finzalización
+										Ascendente</option>
+									<option value="6">Ordenar Todos Finzalización
+										Descendente</option>
+									<option value="7">Ordenar Todos Ancho Ascendente</option>
+									<option value="8">Ordenar Todos Ancho Descendente</option>
+									<option value="9">Ordenar Todos Alto Ascendente</option>
+									<option value="10">Ordenar Todos Alto Descendente</option>
+									<option value="11">Ordenar Todos Precio Ascendente</option>
+									<option value="12">Ordenar Todos Precio Descendente</option>
+									<option value="13">Ordenar Todos Fecha de Venta
+										Ascendente</option>
+									<option value="14">Ordenar Todos Fecha de Venta
+										Descendente</option>
+									<option value="15">Ordenar Todos Autor Ascendente</option>
+									<option value="16">Ordenar Todos Autor Descendente</option>
+									<option value="17">Ordenar Todos Comprador Ascendente</option>
+									<option value="18">Ordenar Todos Comprador Descendente</option>
+								</select>
 							</div>
-
-							<div th:if="${cuadro.comprador} == null">
-								<b><span th:text="'Cuadro sin propietario'" /></b><br /> <a
-									th:href="@{/comprarCuadro(idCompra=${cuadro.idCuadro})}">Comprar</a><br />
-							</div>
-
-							<a th:href="@{/modificarCuadro(id=${cuadro.idCuadro})}">Editar</a><br />
-
-							<br />
 						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary btn-md"
+									value="Ordenar">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="row row-bottom-padded-md">
+				<div th:each="cuadro : ${cuadros}">
+					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+
+						<b><span th:text="'Título: ' + ${cuadro.tituloCuadro}" /></b><br />
+						<b><span
+							th:text="'Descripción: ' + ${cuadro.descripcionCuadro}" /></b><br />
+						<b><span
+							th:text="'Año de Finalización: ' + ${cuadro.anoFinCuadro}" /></b><br />
+						<b><span th:text="'Ancho: ' + ${cuadro.anchoCuadro} + ' cm'" /></b><br />
+						<b><span th:text="'Alto: ' + ${cuadro.altoCuadro} + ' cm'" /></b><br />
+						<b><span th:text="'Precio: ' + ${cuadro.precioCuadro} + ' €'" /></b><br />
+						<b><span th:text="'Autor: ' + ${cuadro.autor.nombreAutor}" /></b><br />
+
+						<div th:if="${cuadro.fechaVenta} != null">
+							<b><span
+								th:text="'Comprador: ' + ${cuadro.comprador.nombreCliente}" /></b><br />
+							<b><span th:text="'Fecha de Venta: ' + ${cuadro.fechaVenta}" /></b><br />
+						</div>
+
+						<div th:if="${cuadro.comprador} == null">
+							<b><span th:text="'Cuadro sin propietario'" /></b><br /> <a
+								th:href="@{/comprarCuadro(idCompra=${cuadro.idCuadro})}">Comprar</a><br />
+						</div>
+
+						<a th:href="@{/modificarCuadro(id=${cuadro.idCuadro})}">Editar</a><br />
+
+						<br />
 					</div>
 				</div>
+			</div>
 
-				<div class="fh5co-narrow-content animate-box"
-					data-animate-effect="fadeInUp">
+			<div class="fh5co-narrow-content animate-box"
+				data-animate-effect="fadeInUp">
 
-					<div class="row">
-						<div class="col-md-12 text-center slider-text">
-							<div class="slider-text-inner">
-								<p>
-									<a class="btn btn-primary btn-learn" href="/consultas">Volver</a>
-								</p>
-							</div>
+				<div class="row">
+					<div class="col-md-12 text-center slider-text">
+						<div class="slider-text-inner">
+							<p>
+								<a class="btn btn-primary btn-learn" href="/consultas">Volver</a>
+							</p>
 						</div>
 					</div>
-
 				</div>
 
 			</div>
 
 		</div>
+
+	</div>
 
 	</div>
 
