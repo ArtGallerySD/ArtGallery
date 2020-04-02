@@ -34,9 +34,9 @@ public class ClienteController {
 				&& (repClientes.findByTelefonoCliente(telefonoCliente) == null)) {
 			repClientes.save(cliente);
 
-			return "registro";
+			return "exito_registro";
 		} else
-			return "fallo_registro";
+			return "fallo_registro_cliente";
 
 	}
 
@@ -156,7 +156,7 @@ public class ClienteController {
 
 		repClientes.save(clienteEditando);
 
-		return "edicion";
+		return "exito_edicion";
 	}
 
 }

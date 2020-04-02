@@ -35,9 +35,9 @@ public class AutorController {
 				&& (repAutores.findByTelefonoAutor(telefonoAutor) == null)) {
 			repAutores.save(autor);
 
-			return "registro";
+			return "exito_registro";
 		} else
-			return "fallo_registro";
+			return "fallo_registro_autor";
 
 	}
 
@@ -176,7 +176,7 @@ public class AutorController {
 			autorEditando.setTelefonoAutor(a.getTelefonoAutor());
 
 		repAutores.save(autorEditando);
-		return "edicion";
+		return "exito_edicion";
 	}
 
 }

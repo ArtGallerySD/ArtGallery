@@ -58,9 +58,9 @@ public class CuadroController {
 			a.getCuadrosCreados().add(cuadro);
 			repAutores.save(a);
 
-			return "registro";
+			return "exito_registro";
 		} else
-			return "fallo_registro";
+			return "fallo_registro_cuadro";
 
 	}
 
@@ -269,7 +269,7 @@ public class CuadroController {
 			}
 		}
 
-		return "edicion";
+		return "exito_edicion";
 	}
 
 }
