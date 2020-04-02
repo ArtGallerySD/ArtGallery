@@ -17,7 +17,7 @@ public class Cuadro {
 	private String tituloCuadro;
 	private String descripcionCuadro;
 	private int anoFinCuadro;
-	private double anchoCuadro; // medidas en cm con 2 decimales
+	private double anchoCuadro;
 	private double altoCuadro;
 	private int precioCuadro;
 

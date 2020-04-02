@@ -24,11 +24,17 @@ public class AutorController {
 	}
 
 	@RequestMapping(value = "/registroAutores")
-	public String registrarAutor(Autor autor) {
+	public String registrarAutor(@RequestParam String nifAutor, @RequestParam String mailAutor,
+			@RequestParam int telefonoAutor, Autor autor) {
 
-		repAutores.save(autor);
+		if ((repAutores.findByNifAutor(nifAutor) == null) && (repAutores.findByMailAutor(mailAutor) == null)
+				&& (repAutores.findByTelefonoAutor(telefonoAutor) == null)) {
+			repAutores.save(autor);
 
-		return "registro";
+			return "registro";
+		} else
+			return "fallo_registro";
+
 	}
 
 	@RequestMapping(value = "/consultasAutores")
@@ -53,7 +59,8 @@ public class AutorController {
 	}
 
 	@RequestMapping(value = "/edicionAutores")
-	public String resultadoEdicionAutor(Autor a) {
+	public String resultadoEdicionAutor(@RequestParam String nifAutor, @RequestParam String mailAutor,
+			@RequestParam int telefonoAutor, Autor a) {
 
 		if (!autorEditando.getNombreAutor().equals(a.getNombreAutor()))
 			autorEditando.setNombreAutor(a.getNombreAutor());
@@ -61,7 +68,7 @@ public class AutorController {
 		if (!autorEditando.getApellidosAutor().equals(a.getApellidosAutor()))
 			autorEditando.setApellidosAutor(a.getApellidosAutor());
 
-		if (!autorEditando.getNifAutor().equals(a.getNifAutor()))
+		if ((!autorEditando.getNifAutor().equals(a.getNifAutor())) && (repAutores.findByNifAutor(nifAutor) == null))
 			autorEditando.setNifAutor(a.getNifAutor());
 
 		if (autorEditando.getAnoNacimientoAutor() != a.getAnoNacimientoAutor())
@@ -73,10 +80,11 @@ public class AutorController {
 		if (autorEditando.getCpAutor() != a.getCpAutor())
 			autorEditando.setCpAutor(a.getCpAutor());
 
-		if (!autorEditando.getMailAutor().equals(a.getMailAutor()))
+		if (!autorEditando.getMailAutor().equals(a.getMailAutor()) && (repAutores.findByMailAutor(mailAutor) == null))
 			autorEditando.setMailAutor(a.getMailAutor());
 
-		if (autorEditando.getTelefonoAutor() != a.getTelefonoAutor())
+		if (autorEditando.getTelefonoAutor() != a.getTelefonoAutor()
+				&& (repAutores.findByTelefonoAutor(telefonoAutor) == null))
 			autorEditando.setTelefonoAutor(a.getTelefonoAutor());
 
 		repAutores.save(autorEditando);

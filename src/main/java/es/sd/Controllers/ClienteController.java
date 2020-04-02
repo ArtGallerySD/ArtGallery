@@ -23,11 +23,17 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/registroClientes")
-	public String registrarCliente(Cliente cliente) {
+	public String registrarCliente(@RequestParam String nifCliente, @RequestParam String mailCliente,
+			@RequestParam int telefonoCliente, Cliente cliente) {
 
-		repClientes.save(cliente);
+		if ((repClientes.findByNifCliente(nifCliente) == null) && (repClientes.findByMailCliente(mailCliente) == null)
+				&& (repClientes.findByTelefonoCliente(telefonoCliente) == null)) {
+			repClientes.save(cliente);
 
-		return "registro";
+			return "registro";
+		} else
+			return "fallo_registro";
+
 	}
 
 	@RequestMapping(value = "/consultasClientes")
@@ -52,7 +58,8 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/edicionClientes")
-	public String resultadoEdicionCliente(Cliente c) {
+	public String resultadoEdicionCliente(@RequestParam String nifCliente, @RequestParam String mailCliente,
+			@RequestParam int telefonoCliente, Cliente c) {
 
 		if (!clienteEditando.getNombreCliente().equals(c.getNombreCliente()))
 			clienteEditando.setNombreCliente(c.getNombreCliente());
@@ -60,16 +67,19 @@ public class ClienteController {
 		if (!clienteEditando.getApellidosCliente().equals(c.getApellidosCliente()))
 			clienteEditando.setApellidosCliente(c.getApellidosCliente());
 
-		if (!clienteEditando.getNifCliente().equals(c.getNifCliente()))
+		if ((!clienteEditando.getNifCliente().equals(c.getNifCliente()))
+				&& (repClientes.findByNifCliente(nifCliente) == null))
 			clienteEditando.setNifCliente(c.getNifCliente());
 
 		if (clienteEditando.getCpCliente() != c.getCpCliente())
 			clienteEditando.setCpCliente(c.getCpCliente());
 
-		if (!clienteEditando.getMailCliente().equals(c.getMailCliente()))
+		if ((!clienteEditando.getMailCliente().equals(c.getMailCliente()))
+				&& (repClientes.findByMailCliente(mailCliente) == null))
 			clienteEditando.setMailCliente(c.getMailCliente());
 
-		if (clienteEditando.getTelefonoCliente() != c.getTelefonoCliente())
+		if ((clienteEditando.getTelefonoCliente() != c.getTelefonoCliente())
+				&& (repClientes.findByTelefonoCliente(telefonoCliente) == null))
 			clienteEditando.setTelefonoCliente(c.getTelefonoCliente());
 
 		repClientes.save(clienteEditando);

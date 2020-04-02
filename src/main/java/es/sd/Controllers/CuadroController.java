@@ -43,17 +43,21 @@ public class CuadroController {
 	}
 
 	@RequestMapping(value = "/registroCuadros")
-	public String registrarCuadro(@RequestParam String nombreAutor, Cuadro cuadro) {
+	public String registrarCuadro(@RequestParam String tituloCuadro, @RequestParam String nifAutor, Cuadro cuadro) {
 
-		Autor a = repAutores.findByNombreAutor(nombreAutor);
-		cuadro.setAutor(a);
+		if (repCuadros.findByTituloCuadro(tituloCuadro) == null) {
+			Autor a = repAutores.findByNifAutor(nifAutor);
+			cuadro.setAutor(a);
 
-		repCuadros.save(cuadro);
+			repCuadros.save(cuadro);
 
-		a.getCuadrosCreados().add(cuadro);
-		repAutores.save(a);
+			a.getCuadrosCreados().add(cuadro);
+			repAutores.save(a);
 
-		return "registro";
+			return "registro";
+		} else
+			return "fallo_registro";
+
 	}
 
 	@RequestMapping(value = "/consultasCuadros")
@@ -113,11 +117,11 @@ public class CuadroController {
 	}
 
 	@RequestMapping(value = "/edicionCuadros")
-	public String resultadoEdicionCuadro(@RequestParam String nombreAutor,
-			@RequestParam Optional<String> nombreComprador, @RequestParam Optional<java.sql.Date> fechaVenta,
-			Cuadro c) {
+	public String resultadoEdicionCuadro(@RequestParam String tituloCuadro, @RequestParam String nifAutor,
+			@RequestParam Optional<String> nifComprador, @RequestParam Optional<java.sql.Date> fechaVenta, Cuadro c) {
 
-		if (!cuadroEditando.getTituloCuadro().equals(c.getTituloCuadro()))
+		if ((!cuadroEditando.getTituloCuadro().equals(c.getTituloCuadro()))
+				&& (repCuadros.findByTituloCuadro(tituloCuadro) == null))
 			cuadroEditando.setTituloCuadro(c.getTituloCuadro());
 
 		if (!cuadroEditando.getDescripcionCuadro().equals(c.getDescripcionCuadro()))
@@ -135,13 +139,13 @@ public class CuadroController {
 		if (cuadroEditando.getPrecioCuadro() != c.getPrecioCuadro())
 			cuadroEditando.setPrecioCuadro(c.getPrecioCuadro());
 
-		if (!cuadroEditando.getAutor().getNombreAutor().equals(nombreAutor)) {
+		if (!cuadroEditando.getAutor().getNifAutor().equals(nifAutor)) {
 
 			Autor autorAntiguo = repAutores.findByNifAutor(cuadroEditando.getAutor().getNifAutor());
 			autorAntiguo.getCuadrosCreados().remove(cuadroEditando);
 			repAutores.save(autorAntiguo);
 
-			Autor autorActual = repAutores.findByNombreAutor(nombreAutor);
+			Autor autorActual = repAutores.findByNifAutor(nifAutor);
 			cuadroEditando.setAutor(autorActual);
 			repCuadros.save(cuadroEditando);
 
@@ -151,15 +155,15 @@ public class CuadroController {
 		} else
 			repCuadros.save(cuadroEditando);
 
-		if (nombreComprador.isPresent() || fechaVenta.isPresent()) {
-			if ((!cuadroEditando.getComprador().getNombreCliente().equals(nombreComprador.get()))
+		if (nifComprador.isPresent() || fechaVenta.isPresent()) {
+			if ((!cuadroEditando.getComprador().getNifCliente().equals(nifComprador.get()))
 					|| (cuadroEditando.getFechaVenta().compareTo(fechaVenta.get()) != 0)) {
 
 				Cliente compradorAntiguo = repClientes.findByNifCliente(cuadroEditando.getComprador().getNifCliente());
 				compradorAntiguo.getCuadrosComprados().remove(cuadroEditando);
 				repClientes.save(compradorAntiguo);
 
-				Cliente compradorActual = repClientes.findByNombreCliente(nombreComprador.get());
+				Cliente compradorActual = repClientes.findByNifCliente(nifComprador.get());
 				cuadroEditando.setComprador(compradorActual);
 				cuadroEditando.setFechaVenta(fechaVenta.get());
 				compradorActual.getCuadrosComprados().add(cuadroEditando);
