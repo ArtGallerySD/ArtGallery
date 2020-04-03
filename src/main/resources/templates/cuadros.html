@@ -105,8 +105,8 @@
 									</div>
 									<div class="form-group">
 										<select name="nifAutor" class="form-control" required>
-											<option th:if="autor.id != null" th:each="autor : ${autores}"
-												th:value="${autor.nifAutor}"
+											<option th:if="autor.idAutor != null"
+												th:each="autor : ${autores}" th:value="${autor.nifAutor}"
 												th:text="${autor.nombreAutor} + ' - ' + ${autor.nifAutor}"></option>
 										</select> <a href="/autores">Darse de alta como autor</a>
 									</div>

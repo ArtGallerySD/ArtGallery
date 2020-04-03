@@ -61,42 +61,118 @@
 			<div class="fh5co-narrow-content animate-box"
 				data-animate-effect="fadeInLeft">
 				<div class="row">
+
 					<div class="col-md-6">
-						<h2 class="fh5co-heading">Autores</h2>
+						<h2>Consultar Autores</h2>
 					</div>
 
 					<form action="/ordenarAutores">
 						<div class="col-md-4">
 							<div class="form-group">
-								<select name="ordenAutor" class="form-control" required>
-									<option selected value="0">Mostrar Todos</option>
-									<option value="1">Ordenar Todos Nombre Ascendente</option>
-									<option value="2">Ordenar Todos Nombre Descendente</option>
-									<option value="3">Ordenar Todos Apellidos Ascendente</option>
-									<option value="4">Ordenar Todos Apellidos Descendente</option>
-									<option value="5">Ordenar Todos NIF Ascendente</option>
-									<option value="6">Ordenar Todos NIF Descendente</option>
-									<option value="7">Ordenar Todos Nacimiento Ascendente</option>
-									<option value="8">Ordenar Todos Nacimiento Descendente</option>
-									<option value="9">Ordenar Todos País Ascendente</option>
-									<option value="10">Ordenar Todos País Descendente</option>
-									<option value="11">Ordenar Todos CP Ascendente</option>
-									<option value="12">Ordenar Todos CP Descendente</option>
-									<option value="13">Ordenar Todos E-mail Ascendente</option>
-									<option value="14">Ordenar Todos E-mail Descendente</option>
-									<option value="15">Ordenar Todos Teléfono Ascendente</option>
-									<option value="16">Ordenar Todos Teléfono Descendente</option>
+								<select id="ordenAutor" name="ordenAutor" class="form-control"
+									required>
+									<option value="0">Seleccione el orden que desea</option>
+									<option value="1">Ordenar Nombre Ascendente</option>
+									<option value="2">Ordenar Nombre Descendente</option>
+									<option value="3">Ordenar Apellidos Ascendente</option>
+									<option value="4">Ordenar Apellidos Descendente</option>
+									<option value="5">Ordenar NIF Ascendente</option>
+									<option value="6">Ordenar NIF Descendente</option>
+									<option value="7">Ordenar Nacimiento Ascendente</option>
+									<option value="8">Ordenar Nacimiento Descendente</option>
+									<option value="9">Ordenar País Ascendente</option>
+									<option value="10">Ordenar País Descendente</option>
+									<option value="11">Ordenar CP Ascendente</option>
+									<option value="12">Ordenar CP Descendente</option>
+									<option value="13">Ordenar E-mail Ascendente</option>
+									<option value="14">Ordenar E-mail Descendente</option>
+									<option value="15">Ordenar Teléfono Ascendente</option>
+									<option value="16">Ordenar Teléfono Descendente</option>
 								</select>
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
-								<input type="submit" class="btn btn-primary btn-md"
+								<input type="submit" id="button" class="btn btn-primary btn-md"
 									value="Ordenar">
 							</div>
 						</div>
 					</form>
 				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="fh5co-heading">Filtros</h2>
+					</div>
+
+					<form action="/filtrarAutores">
+						<div class="form-row">
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<input type="text" name="nombreAutor" class="form-control"
+										placeholder="Nombre">
+								</div>
+
+								<div class="form-group">
+									<input type="text" name="paisNacimientoAutor"
+										class="form-control" placeholder="País de Nacimiento">
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<input type="text" name="apellidosAutor" class="form-control"
+										placeholder="Apellidos">
+								</div>
+
+								<div class="form-group">
+									<input type="text" name="cpAutor" class="form-control"
+										pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}"
+										placeholder="Código Postal">
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<input type="text" name="nifAutor" class="form-control"
+										placeholder="NIF" pattern="[0-9]{8}[A-Za-z]{1}">
+								</div>
+
+								<div class="form-group">
+									<input type="email" name="mailAutor" class="form-control"
+										placeholder="E-mail">
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<input type="number" name="anoNacimientoAutor"
+										class="form-control" min="0" max="2020"
+										placeholder="Año de Nacimiento">
+								</div>
+
+								<div class="form-group">
+									<input type="text" name="telefonoAutor" class="form-control"
+										pattern="[0-9]{9}" placeholder="Teléfono">
+								</div>
+							</div>
+
+						</div>
+
+						<div class="form-row">
+							<div class="col-md-12 text-center">
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary btn-md"
+										value="Filtrar">
+								</div>
+							</div>
+						</div>
+
+					</form>
+
+				</div>
+
 			</div>
 
 			<div class="fh5co-narrow-content">

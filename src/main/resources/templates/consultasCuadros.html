@@ -60,9 +60,10 @@
 
 			<div class="fh5co-narrow-content animate-box"
 				data-animate-effect="fadeInLeft">
+
 				<div class="row">
 					<div class="col-md-6">
-						<h2 class="fh5co-heading">Cuadros</h2>
+						<h2>Consultar Cuadros</h2>
 					</div>
 
 					<form action="/ordenarCuadros">
@@ -70,29 +71,24 @@
 							<div class="form-group">
 								<select name="ordenCuadro" class="form-control" required>
 									<option selected value="0">Mostrar Todos</option>
-									<option value="1">Ordenar Todos Título Ascendente</option>
-									<option value="2">Ordenar Todos Título Descendente</option>
-									<option value="3">Ordenar Todos Descripción Ascendente</option>
-									<option value="4">Ordenar Todos Descripción
-										Descendente</option>
-									<option value="5">Ordenar Todos Finzalización
-										Ascendente</option>
-									<option value="6">Ordenar Todos Finzalización
-										Descendente</option>
-									<option value="7">Ordenar Todos Ancho Ascendente</option>
-									<option value="8">Ordenar Todos Ancho Descendente</option>
-									<option value="9">Ordenar Todos Alto Ascendente</option>
-									<option value="10">Ordenar Todos Alto Descendente</option>
-									<option value="11">Ordenar Todos Precio Ascendente</option>
-									<option value="12">Ordenar Todos Precio Descendente</option>
-									<option value="13">Ordenar Todos Fecha de Venta
-										Ascendente</option>
-									<option value="14">Ordenar Todos Fecha de Venta
-										Descendente</option>
-									<option value="15">Ordenar Todos Autor Ascendente</option>
-									<option value="16">Ordenar Todos Autor Descendente</option>
-									<option value="17">Ordenar Todos Comprador Ascendente</option>
-									<option value="18">Ordenar Todos Comprador Descendente</option>
+									<option value="1">Ordenar Título Ascendente</option>
+									<option value="2">Ordenar Título Descendente</option>
+									<option value="3">Ordenar Descripción Ascendente</option>
+									<option value="4">Ordenar Descripción Descendente</option>
+									<option value="5">Ordenar Finzalización Ascendente</option>
+									<option value="6">Ordenar Finzalización Descendente</option>
+									<option value="7">Ordenar Ancho Ascendente</option>
+									<option value="8">Ordenar Ancho Descendente</option>
+									<option value="9">Ordenar Alto Ascendente</option>
+									<option value="10">Ordenar Alto Descendente</option>
+									<option value="11">Ordenar Precio Ascendente</option>
+									<option value="12">Ordenar Precio Descendente</option>
+									<option value="13">Ordenar Fecha de Venta Ascendente</option>
+									<option value="14">Ordenar Fecha de Venta Descendente</option>
+									<option value="15">Ordenar Autor Ascendente</option>
+									<option value="16">Ordenar Autor Descendente</option>
+									<option value="17">Ordenar Comprador Ascendente</option>
+									<option value="18">Ordenar Comprador Descendente</option>
 								</select>
 							</div>
 						</div>
@@ -104,6 +100,90 @@
 						</div>
 					</form>
 				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="fh5co-heading">Filtros</h2>
+					</div>
+
+					<form action="/filtrarCuadros">
+						<div class="form-row">
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<input type="text" name="tituloCuadro" class="form-control"
+										placeholder="Título">
+								</div>
+
+								<div class="form-group">
+									<input type="number" name="precioCuadro" class="form-control"
+										min="0" placeholder="Precio (€)">
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<input type="number" name="anoFinCuadro" class="form-control"
+										placeholder="Año de finalización">
+								</div>
+
+								<div class="form-group">
+									<select name="nifAutor" class="form-control">
+										<option selected value="0">No seleccionar Autor</option>
+										<option th:if="autor.idAutor != null"
+											th:each="autor : ${autores}" th:value="${autor.nifAutor}"
+											th:text="${autor.nombreAutor} + ' - ' + ${autor.nifAutor}"></option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<input type="text" name="anchoCuadro"
+										pattern="[0-9]+(\.[0-9]{0,2})?" class="form-control"
+										placeholder="Anchura (cm)">
+								</div>
+
+								<div class="form-group">
+									<select id="nifComprador" name="nifComprador"
+										class="form-control">
+										<option selected value="0">No seleccionar Comprador</option>
+										<option th:if="cliente.idCliente != null"
+											th:each="cliente : ${clientes}"
+											th:value="${cliente.nifCliente}"
+											th:text="${cliente.nombreCliente} + ' - ' + ${cliente.nifCliente}"></option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<input type="text" name="altoCuadro"
+										pattern="[0-9]+(\.[0-9]{0,2})?" class="form-control"
+										placeholder="Altura (cm)">
+								</div>
+
+								<div class="form-group">
+									<input type="date" id="fechaVenta" name="fechaVenta"
+										class="form-control" placeholder="Fecha de Venta">
+								</div>
+							</div>
+
+						</div>
+
+						<div class="form-row">
+							<div class="col-md-12 text-center">
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary btn-md"
+										value="Filtrar">
+								</div>
+							</div>
+						</div>
+
+					</form>
+
+				</div>
+
 			</div>
 
 			<div class="row row-bottom-padded-md">

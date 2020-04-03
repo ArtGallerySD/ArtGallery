@@ -62,7 +62,7 @@
 				data-animate-effect="fadeInLeft">
 				<div class="row">
 					<div class="col-md-6">
-						<h2 class="fh5co-heading">Clientes</h2>
+						<h2>Consultar Clientes</h2>
 					</div>
 
 					<form action="/ordenarClientes">
@@ -70,18 +70,18 @@
 							<div class="form-group">
 								<select name="ordenCliente" class="form-control" required>
 									<option selected value="0">Mostrar Todos</option>
-									<option value="1">Ordenar Todos Nombre Ascendente</option>
-									<option value="2">Ordenar Todos Nombre Descendente</option>
-									<option value="3">Ordenar Todos Apellidos Ascendente</option>
-									<option value="4">Ordenar Todos Apellidos Descendente</option>
-									<option value="5">Ordenar Todos NIF Ascendente</option>
-									<option value="6">Ordenar Todos NIF Descendente</option>
-									<option value="7">Ordenar Todos CP Ascendente</option>
-									<option value="8">Ordenar Todos CP Descendente</option>
-									<option value="9">Ordenar Todos E-mail Ascendente</option>
-									<option value="10">Ordenar Todos E-mail Descendente</option>
-									<option value="11">Ordenar Todos Teléfono Ascendente</option>
-									<option value="12">Ordenar Todos Teléfono Descendente</option>
+									<option value="1">Ordenar Nombre Ascendente</option>
+									<option value="2">Ordenar Nombre Descendente</option>
+									<option value="3">Ordenar Apellidos Ascendente</option>
+									<option value="4">Ordenar Apellidos Descendente</option>
+									<option value="5">Ordenar NIF Ascendente</option>
+									<option value="6">Ordenar NIF Descendente</option>
+									<option value="7">Ordenar CP Ascendente</option>
+									<option value="8">Ordenar CP Descendente</option>
+									<option value="9">Ordenar E-mail Ascendente</option>
+									<option value="10">Ordenar E-mail Descendente</option>
+									<option value="11">Ordenar Teléfono Ascendente</option>
+									<option value="12">Ordenar Teléfono Descendente</option>
 								</select>
 							</div>
 						</div>
@@ -92,6 +92,70 @@
 							</div>
 						</div>
 					</form>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="fh5co-heading">Filtros</h2>
+					</div>
+
+					<form action="/filtrarClientes">
+						<div class="form-row">
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<input type="text" name="nombreCliente" class="form-control"
+										placeholder="Nombre">
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<input type="text" name="apellidosCliente" class="form-control"
+										placeholder="Apellidos">
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<input type="text" name="nifCliente" class="form-control"
+										pattern="[0-9]{8}[A-Za-z]{1}" placeholder="NIF">
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<input type="text" name="cpCliente" class="form-control"
+										pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}"
+										placeholder="Código Postal">
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<input type="email" name="mailCliente" class="form-control"
+										placeholder="E-mail">
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<input type="text" name="telefonoCliente" class="form-control"
+										pattern="[0-9]{9}" placeholder="Teléfono">
+								</div>
+							</div>
+
+						</div>
+						<div class="form-row">
+							<div class="col-md-12 text-center">
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary btn-md"
+										value="Filtrar">
+								</div>
+							</div>
+						</div>
+					</form>
+
 				</div>
 			</div>
 

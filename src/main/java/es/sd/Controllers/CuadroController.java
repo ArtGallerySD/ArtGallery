@@ -70,8 +70,12 @@ public class CuadroController {
 	public String mostrarCuadros(Model model) {
 
 		List<Cuadro> cuadros = repCuadros.findAll();
+		List<Autor> autores = repAutores.findAll();
+		List<Cliente> clientes = repClientes.findAll();
 
 		model.addAttribute("cuadros", cuadros);
+		model.addAttribute("autores", autores);
+		model.addAttribute("clientes", clientes);
 
 		return "consultasCuadros";
 	}
