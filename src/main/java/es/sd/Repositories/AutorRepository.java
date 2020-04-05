@@ -29,38 +29,21 @@ public interface AutorRepository extends JpaRepository<Autor, Long> {
 
 	// Métodos elaborados de consulta de la base de datos
 
-	Autor findByNifAutorAndMailAutor(String nifAutor, String mailAutor);
-
-	Autor findByNifAutorAndTelefonoAutor(String nifAutor, int telefonoAutor);
-
-	Autor findByMailAutorAndTelefonoAutor(String mailAutor, int telefonoAutor);
-
-	Autor findByNifAutorAndMailAutorAndTelefonoAutor(String nifAutor, String mailAutor, int telefonoAutor);
-
 	List<Autor> findByNombreAutorAndApellidosAutor(String nombreAutor, String apellidosAutor);
 
+	Autor findByNombreAutorAndNifAutor(String nombreAutor, String nifAutor);
+
 	List<Autor> findByNombreAutorAndAnoNacimientoAutor(String nombreAutor, int anoNacimientoAutor);
-
-	List<Autor> findByNombreAutorAndApellidosAutorAndPaisNacimientoAutor(String nombreAutor, String apellidosAutor,
-			String paisNacimientoAutor);
-
-	List<Autor> findByNombreAutorAndApellidosAutorAndCpAutor(String nombreAutor, String apellidosAutor, int cpAutor);
-
-	List<Autor> findByNombreAutorAndApellidosAutorAndAnoNacimientoAutorAndCpAutor(String nombreAutor,
-			String apellidosAutor, int anoNacimientoAutor, int cpAutor);
 
 	List<Autor> findByNombreAutorAndPaisNacimientoAutor(String nombreAutor, String paisNacimientoAutor);
 
 	List<Autor> findByNombreAutorAndCpAutor(String nombreAutor, int cpAutor);
 
-	List<Autor> findByNombreAutorAndApellidosAutorAndAnoNacimientoAutor(String nombreAutor, String apellidosAutor,
-			int anoNacimientoAutor);
+	Autor findByNombreAutorAndMailAutor(String nombreAutor, String mailAutor);
 
-	List<Autor> findByNombreAutorAndApellidosAutorAndAnoNacimientoAutorAndPaisNacimientoAutor(String nombreAutor,
-			String apellidosAutor, int anoNacimientoAutor, String paisNacimientoAutor);
+	Autor findByNombreAutorAndTelefonoAutor(String nombreAutor, int telefonoAutor);
 
-	List<Autor> findByNombreAutorAndApellidosAutorAndAnoNacimientoAutorAndPaisNacimientoAutorAndCpAutor(
-			String nombreAutor, String apellidosAutor, int anoNacimientoAutor, String paisNacimientoAutor, int cpAutor);
+	Autor findByApellidosAutorAndNifAutor(String apellidosAutor, String nifAutor);
 
 	List<Autor> findByApellidosAutorAndAnoNacimientoAutor(String apellidosAutor, int anoNacimientoAutor);
 
@@ -68,23 +51,43 @@ public interface AutorRepository extends JpaRepository<Autor, Long> {
 
 	List<Autor> findByApellidosAutorAndCpAutor(String apellidosAutor, int cpAutor);
 
-	List<Autor> findByApellidosAutorAndAnoNacimientoAutorAndCpAutor(String apellidosAutor, int anoNacimientoAutor,
-			int cpAutor);
+	Autor findByApellidosAutorAndMailAutor(String apellidosAutor, String mailAutor);
 
-	List<Autor> findByApellidosAutorAndAnoNacimientoAutorAndPaisNacimientoAutor(String apellidosAutor,
-			int anoNacimientoAutor, String paisNacimientoAutor);
+	Autor findByApellidosAutorAndTelefonoAutor(String apellidosAutor, int telefonoAutor);
 
-	List<Autor> findByApellidosAutorAndAnoNacimientoAutorAndPaisNacimientoAutorAndCpAutor(String apellidosAutor,
-			int anoNacimientoAutor, String paisNacimientoAutor, int cpAutor);
+	Autor findByNifAutorAndAnoNacimientoAutor(String nifAutor, int anoNacimientoAutor);
+
+	Autor findByNifAutorAndPaisNacimientoAutor(String nifAutor, String paisNacimientoAutor);
+
+	Autor findByNifAutorAndCpAutor(String nifAutor, int cpAutor);
+
+	Autor findByNifAutorAndMailAutor(String nifAutor, String mailAutor);
+
+	Autor findByNifAutorAndTelefonoAutor(String nifAutor, int telefonoAutor);
 
 	List<Autor> findByAnoNacimientoAutorAndPaisNacimientoAutor(int anoNacimientoAutor, String paisNacimientoAutor);
 
 	List<Autor> findByAnoNacimientoAutorAndCpAutor(int anoNacimientoAutor, int cpAutor);
 
-	List<Autor> findByAnoNacimientoAutorAndPaisNacimientoAutorAndCpAutor(int anoNacimientoAutor,
-			String paisNacimientoAutor, int cpAutor);
+	Autor findByAnoNacimientoAutorAndMailAutor(int anoNacimientoAutor, String mailAutor);
+
+	Autor findByAnoNacimientoAutorAndTelefonoAutor(int anoNacimientoAutor, int telefonoAutor);
 
 	List<Autor> findByPaisNacimientoAutorAndCpAutor(String paisNacimientoAutor, int cpAutor);
+
+	Autor findByPaisNacimientoAutorAndMailAutor(String paisNacimientoAutor, String mailAutor);
+
+	Autor findByPaisNacimientoAutorAndTelefonoAutor(String paisNacimientoAutor, int telefonoAutor);
+
+	Autor findByCpAutorAndMailAutor(int cpAutor, String mailAutor);
+
+	Autor findByCpAutorAndTelefonoAutor(int cpAutor, int telefonoAutor);
+
+	Autor findByMailAutorAndTelefonoAutor(String mailAutor, int telefonoAutor);
+
+	Autor findByNombreAutorAndApellidosAutorAndNifAutorAndAnoNacimientoAutorAndPaisNacimientoAutorAndCpAutorAndMailAutorAndTelefonoAutor(
+			String nombreAutor, String apellidosAutor, String nifAutor, int anoNacimientoAutor,
+			String paisNacimientoAutor, int cpAutor, String mailAutor, int telefonoAutor);
 
 	// Metodos de ordenación de la base de datos
 

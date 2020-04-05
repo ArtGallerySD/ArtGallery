@@ -61,151 +61,278 @@ public class AutorController {
 			@RequestParam(required = false) String mailAutor,
 			@RequestParam(required = false, defaultValue = "0") int telefonoAutor, Model model) {
 
-		if ((!nifAutor.equals("")) && (mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autorNIF = repAutores.findByNifAutor(nifAutor);
-			model.addAttribute("autores", autorNIF);
-		} else if ((nifAutor.equals("")) && (!mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autorMail = repAutores.findByMailAutor(mailAutor);
-			model.addAttribute("autores", autorMail);
-		} else if ((nifAutor.equals("")) && (mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autorTelefono = repAutores.findByTelefonoAutor(telefonoAutor);
-			model.addAttribute("autores", autorTelefono);
-		} else if ((!nifAutor.equals("")) && (!mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autorNIFMail = repAutores.findByNifAutorAndMailAutor(nifAutor, mailAutor);
-			model.addAttribute("autores", autorNIFMail);
-		} else if ((!nifAutor.equals("")) && (mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autorNIFTel = repAutores.findByNifAutorAndTelefonoAutor(nifAutor, telefonoAutor);
-			model.addAttribute("autores", autorNIFTel);
-		} else if ((nifAutor.equals("")) && (!mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autorMailTel = repAutores.findByMailAutorAndTelefonoAutor(mailAutor, telefonoAutor);
-			model.addAttribute("autores", autorMailTel);
-		} else if ((!nifAutor.equals("")) && (!mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autorNIFMailTel = repAutores.findByNifAutorAndMailAutorAndTelefonoAutor(nifAutor, mailAutor,
-					telefonoAutor);
-			model.addAttribute("autores", autorNIFMailTel);
-		} else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
+		if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresNombre = repAutores.findByNombreAutor(nombreAutor);
 			model.addAttribute("autores", autoresNombre);
-		} else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
+		}
+
+		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresApellidos = repAutores.findByApellidosAutor(apellidosAutor);
 			model.addAttribute("autores", autoresApellidos);
-		} else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autorNIF = repAutores.findByNifAutor(nifAutor);
+			model.addAttribute("autores", autorNIF);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor != 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresAno = repAutores.findByAnoNacimientoAutor(anoNacimientoAutor);
 			model.addAttribute("autores", autoresAno);
-		} else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (!paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresPais = repAutores.findByPaisNacimientoAutor(paisNacimientoAutor);
 			model.addAttribute("autores", autoresPais);
-		} else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor != 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresCp = repAutores.findByCpAutor(cpAutor);
 			model.addAttribute("autores", autoresCp);
-		} else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresMail = repAutores.findByMailAutor(mailAutor);
+			model.addAttribute("autores", autoresMail);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
+			Autor autoresTelefono = repAutores.findByTelefonoAutor(telefonoAutor);
+			model.addAttribute("autores", autoresTelefono);
+		}
+
+		else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresNombreApellidos = repAutores.findByNombreAutorAndApellidosAutor(nombreAutor,
 					apellidosAutor);
 			model.addAttribute("autores", autoresNombreApellidos);
-		} else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
+		}
+
+		else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresNombreNIF = repAutores.findByNombreAutorAndNifAutor(nombreAutor, nifAutor);
+			model.addAttribute("autores", autoresNombreNIF);
+		}
+
+		else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor != 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresNombreAno = repAutores.findByNombreAutorAndAnoNacimientoAutor(nombreAutor,
 					anoNacimientoAutor);
 			model.addAttribute("autores", autoresNombreAno);
-		} else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
+		}
+
+		else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (!paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresNombrePais = repAutores.findByNombreAutorAndPaisNacimientoAutor(nombreAutor,
 					paisNacimientoAutor);
 			model.addAttribute("autores", autoresNombrePais);
-		} else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
+		}
+
+		else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor != 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresNombreCP = repAutores.findByNombreAutorAndCpAutor(nombreAutor, cpAutor);
 			model.addAttribute("autores", autoresNombreCP);
-		} else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
-			List<Autor> autoresNombreApellidosAno = repAutores.findByNombreAutorAndApellidosAutorAndAnoNacimientoAutor(
-					nombreAutor, apellidosAutor, anoNacimientoAutor);
-			model.addAttribute("autores", autoresNombreApellidosAno);
-		} else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
-			List<Autor> autoresNombreApellidosPais = repAutores
-					.findByNombreAutorAndApellidosAutorAndPaisNacimientoAutor(nombreAutor, apellidosAutor,
-							paisNacimientoAutor);
-			model.addAttribute("autores", autoresNombreApellidosPais);
-		} else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
-			List<Autor> autoresNombreApellidosCP = repAutores.findByNombreAutorAndApellidosAutorAndCpAutor(nombreAutor,
-					apellidosAutor, cpAutor);
-			model.addAttribute("autores", autoresNombreApellidosCP);
-		} else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
-			List<Autor> autoresNombreApellidosAnoPais = repAutores
-					.findByNombreAutorAndApellidosAutorAndAnoNacimientoAutorAndPaisNacimientoAutor(nombreAutor,
-							apellidosAutor, anoNacimientoAutor, paisNacimientoAutor);
-			model.addAttribute("autores", autoresNombreApellidosAnoPais);
-		} else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
-			List<Autor> autoresNombreApellidosAnoCP = repAutores
-					.findByNombreAutorAndApellidosAutorAndAnoNacimientoAutorAndCpAutor(nombreAutor, apellidosAutor,
-							anoNacimientoAutor, cpAutor);
-			model.addAttribute("autores", autoresNombreApellidosAnoCP);
-		} else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
-			List<Autor> autoresNombreApellidosAnoPaisCP = repAutores
-					.findByNombreAutorAndApellidosAutorAndAnoNacimientoAutorAndPaisNacimientoAutorAndCpAutor(
-							nombreAutor, apellidosAutor, anoNacimientoAutor, paisNacimientoAutor, cpAutor);
-			model.addAttribute("autores", autoresNombreApellidosAnoPaisCP);
-		} else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
+		}
+
+		else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresNombreMail = repAutores.findByNombreAutorAndMailAutor(nombreAutor, mailAutor);
+			model.addAttribute("autores", autoresNombreMail);
+		}
+
+		else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
+			Autor autoresNombreTelefono = repAutores.findByNombreAutorAndTelefonoAutor(nombreAutor, telefonoAutor);
+			model.addAttribute("autores", autoresNombreTelefono);
+		}
+
+		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (!nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresApellidosNIF = repAutores.findByApellidosAutorAndNifAutor(apellidosAutor, nifAutor);
+			model.addAttribute("autores", autoresApellidosNIF);
+		}
+
+		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor != 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresApellidosAno = repAutores.findByApellidosAutorAndAnoNacimientoAutor(apellidosAutor,
 					anoNacimientoAutor);
 			model.addAttribute("autores", autoresApellidosAno);
-		} else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
+		}
+
+		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (!paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresApellidosPais = repAutores.findByApellidosAutorAndPaisNacimientoAutor(apellidosAutor,
 					paisNacimientoAutor);
 			model.addAttribute("autores", autoresApellidosPais);
-		} else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
+		}
+
+		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor != 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresApellidosCP = repAutores.findByApellidosAutorAndCpAutor(apellidosAutor, cpAutor);
 			model.addAttribute("autores", autoresApellidosCP);
-		} else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
-			List<Autor> autoresApellidosAnoPais = repAutores
-					.findByApellidosAutorAndAnoNacimientoAutorAndPaisNacimientoAutor(apellidosAutor, anoNacimientoAutor,
-							paisNacimientoAutor);
-			model.addAttribute("autores", autoresApellidosAnoPais);
-		} else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
-			List<Autor> autoresApellidosAnoCP = repAutores
-					.findByApellidosAutorAndAnoNacimientoAutorAndCpAutor(apellidosAutor, anoNacimientoAutor, cpAutor);
-			model.addAttribute("autores", autoresApellidosAnoCP);
-		} else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
-			List<Autor> autoresApellidosAnoPaisCP = repAutores
-					.findByApellidosAutorAndAnoNacimientoAutorAndPaisNacimientoAutorAndCpAutor(apellidosAutor,
-							anoNacimientoAutor, paisNacimientoAutor, cpAutor);
-			model.addAttribute("autores", autoresApellidosAnoPaisCP);
-		} else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor == 0)) {
+		}
+
+		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresApellidosMail = repAutores.findByApellidosAutorAndMailAutor(apellidosAutor, mailAutor);
+			model.addAttribute("autores", autoresApellidosMail);
+		}
+
+		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
+			Autor autoresApellidosTelefono = repAutores.findByApellidosAutorAndTelefonoAutor(apellidosAutor,
+					telefonoAutor);
+			model.addAttribute("autores", autoresApellidosTelefono);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
+				&& (anoNacimientoAutor != 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresNIFAno = repAutores.findByNifAutorAndAnoNacimientoAutor(nifAutor, anoNacimientoAutor);
+			model.addAttribute("autores", autoresNIFAno);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (!paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresNIFPais = repAutores.findByNifAutorAndPaisNacimientoAutor(nifAutor, paisNacimientoAutor);
+			model.addAttribute("autores", autoresNIFPais);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor != 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresNIFCP = repAutores.findByNifAutorAndCpAutor(nifAutor, cpAutor);
+			model.addAttribute("autores", autoresNIFCP);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresNIFMail = repAutores.findByNifAutorAndMailAutor(nifAutor, mailAutor);
+			model.addAttribute("autores", autoresNIFMail);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
+			Autor autoresNIFTelefono = repAutores.findByNifAutorAndTelefonoAutor(nifAutor, telefonoAutor);
+			model.addAttribute("autores", autoresNIFTelefono);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor != 0) && (!paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresAnoPais = repAutores.findByAnoNacimientoAutorAndPaisNacimientoAutor(anoNacimientoAutor,
 					paisNacimientoAutor);
 			model.addAttribute("autores", autoresAnoPais);
-		} else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor != 0) && (paisNacimientoAutor.equals("")) && (cpAutor != 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresAnoCP = repAutores.findByAnoNacimientoAutorAndCpAutor(anoNacimientoAutor, cpAutor);
 			model.addAttribute("autores", autoresAnoCP);
-		} else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor != 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
-			List<Autor> autoresAnoPaisCP = repAutores.findByAnoNacimientoAutorAndPaisNacimientoAutorAndCpAutor(
-					anoNacimientoAutor, paisNacimientoAutor, cpAutor);
-			model.addAttribute("autores", autoresAnoPaisCP);
-		} else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (anoNacimientoAutor == 0)
-				&& (!paisNacimientoAutor.equals("")) && (cpAutor != 0)) {
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor != 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresAnoMail = repAutores.findByAnoNacimientoAutorAndMailAutor(anoNacimientoAutor, mailAutor);
+			model.addAttribute("autores", autoresAnoMail);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor != 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
+			Autor autoresAnoTelefono = repAutores.findByAnoNacimientoAutorAndTelefonoAutor(anoNacimientoAutor,
+					telefonoAutor);
+			model.addAttribute("autores", autoresAnoTelefono);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (!paisNacimientoAutor.equals("")) && (cpAutor != 0)
+				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
 			List<Autor> autoresPaisCP = repAutores.findByPaisNacimientoAutorAndCpAutor(paisNacimientoAutor, cpAutor);
 			model.addAttribute("autores", autoresPaisCP);
-		} else {
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (!paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresPaisMail = repAutores.findByPaisNacimientoAutorAndMailAutor(paisNacimientoAutor, mailAutor);
+			model.addAttribute("autores", autoresPaisMail);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (!paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
+			Autor autoresPaisTelefono = repAutores.findByPaisNacimientoAutorAndTelefonoAutor(paisNacimientoAutor,
+					telefonoAutor);
+			model.addAttribute("autores", autoresPaisTelefono);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor != 0)
+				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
+			Autor autoresCPMail = repAutores.findByCpAutorAndMailAutor(cpAutor, mailAutor);
+			model.addAttribute("autores", autoresCPMail);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor != 0)
+				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
+			Autor autoresCPTelefono = repAutores.findByCpAutorAndTelefonoAutor(cpAutor, telefonoAutor);
+			model.addAttribute("autores", autoresCPTelefono);
+		}
+
+		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
+				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
+				&& (!mailAutor.equals("")) && (telefonoAutor != 0)) {
+			Autor autoresMailTelefono = repAutores.findByMailAutorAndTelefonoAutor(mailAutor, telefonoAutor);
+			model.addAttribute("autores", autoresMailTelefono);
+		}
+
+		else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (!nifAutor.equals(""))
+				&& (anoNacimientoAutor != 0) && (!paisNacimientoAutor.equals("")) && (cpAutor != 0)
+				&& (!mailAutor.equals("")) && (telefonoAutor != 0)) {
+			Autor autoresTodo = repAutores
+					.findByNombreAutorAndApellidosAutorAndNifAutorAndAnoNacimientoAutorAndPaisNacimientoAutorAndCpAutorAndMailAutorAndTelefonoAutor(
+							nombreAutor, apellidosAutor, nifAutor, anoNacimientoAutor, paisNacimientoAutor, cpAutor,
+							mailAutor, telefonoAutor);
+			model.addAttribute("autores", autoresTodo);
+		}
+
+		else {
 			List<Autor> autores = repAutores.findAll();
 			model.addAttribute("autores", autores);
 		}

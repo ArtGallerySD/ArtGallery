@@ -6,7 +6,7 @@ import es.sd.Entities.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
-	// Data base query methods
+	// Métodos simples de consulta de la base de datos
 
 	Cliente findByIdCliente(long idCliente);
 
@@ -21,8 +21,12 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 	Cliente findByMailCliente(String mailCliente);
 
 	Cliente findByTelefonoCliente(int telefonoCliente);
+	
+	// Métodos elaborados de consulta de la base de datos
+	
+	
 
-	// Data base order methods
+	// Metodos de ordenación de la base de datos
 
 	List<Cliente> findAllByOrderByNombreClienteAsc();
 
