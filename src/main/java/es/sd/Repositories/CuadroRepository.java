@@ -9,7 +9,7 @@ import es.sd.Entities.Cuadro;
 
 public interface CuadroRepository extends JpaRepository<Cuadro, Long> {
 
-	// Data base query methods
+	// Métodos simples de consulta de la base de datos
 
 	Cuadro findByIdCuadro(long idCuadro);
 
@@ -33,7 +33,9 @@ public interface CuadroRepository extends JpaRepository<Cuadro, Long> {
 
 	Cuadro findByTituloCuadroAndAutor(String tituloCuadro, Autor autor);
 
-	// Data base order methods
+	// Métodos elaborados de consulta de la base de datos
+
+	// Metodos de ordenación de la base de datos
 
 	List<Cuadro> findAllByOrderByTituloCuadroAsc();
 

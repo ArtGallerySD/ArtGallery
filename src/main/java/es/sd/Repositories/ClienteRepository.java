@@ -21,10 +21,42 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 	Cliente findByMailCliente(String mailCliente);
 
 	Cliente findByTelefonoCliente(int telefonoCliente);
-	
+
 	// Métodos elaborados de consulta de la base de datos
-	
-	
+
+	List<Cliente> findByNombreClienteAndApellidosCliente(String nombreCliente, String apellidosCliente);
+
+	Cliente findByNombreClienteAndNifCliente(String nombreCliente, String nifCliente);
+
+	List<Cliente> findByNombreClienteAndCpCliente(String nombreCliente, int cpCliente);
+
+	Cliente findByNombreClienteAndMailCliente(String nombreCliente, String mailCliente);
+
+	Cliente findByNombreClienteAndTelefonoCliente(String nombreCliente, int telefonoCliente);
+
+	Cliente findByApellidosClienteAndNifCliente(String apellidosCliente, String nifCliente);
+
+	List<Cliente> findByApellidosClienteAndCpCliente(String apellidosCliente, int cpCliente);
+
+	Cliente findByApellidosClienteAndMailCliente(String apellidosCliente, String mailCliente);
+
+	Cliente findByApellidosClienteAndTelefonoCliente(String apellidosCliente, int telefonoCliente);
+
+	Cliente findByNifClienteAndCpCliente(String nifCliente, int cpCliente);
+
+	Cliente findByNifClienteAndMailCliente(String nifCliente, String mailCliente);
+
+	Cliente findByNifClienteAndTelefonoCliente(String nifCliente, int telefonoCliente);
+
+	Cliente findByCpClienteAndMailCliente(int cpCliente, String mailCliente);
+
+	Cliente findByCpClienteAndTelefonoCliente(int cpCliente, int telefonoCliente);
+
+	Cliente findByMailClienteAndTelefonoCliente(String mailCliente, int telefonoCliente);
+
+	Cliente findByNombreClienteAndApellidosClienteAndNifClienteAndCpClienteAndMailClienteAndTelefonoCliente(
+			String nombreCliente, String apellidosCliente, String nifCliente, int cpCliente, String mailCliente,
+			int telefonoCliente);
 
 	// Metodos de ordenación de la base de datos
 

@@ -52,6 +52,161 @@ public class ClienteController {
 		return "consultasClientes";
 	}
 
+	@RequestMapping(value = "/filtrarClientes")
+	public String filtrarClientes(@RequestParam(required = false) String nombreCliente,
+			@RequestParam(required = false) String apellidosCliente, @RequestParam(required = false) String nifCliente,
+			@RequestParam(required = false, defaultValue = "0") int cpCliente,
+			@RequestParam(required = false) String mailCliente,
+			@RequestParam(required = false, defaultValue = "0") int telefonoCliente, Model model) {
+
+		if ((!nombreCliente.equals("")) && (apellidosCliente.equals("")) && (nifCliente.equals("")) && (cpCliente == 0)
+				&& (mailCliente.equals("")) && (telefonoCliente == 0)) {
+			List<Cliente> clientesNombre = repClientes.findByNombreCliente(nombreCliente);
+			model.addAttribute("clientes", clientesNombre);
+		}
+
+		else if ((nombreCliente.equals("")) && (!apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente == 0) && (mailCliente.equals("")) && (telefonoCliente == 0)) {
+			List<Cliente> clientesApellidos = repClientes.findByApellidosCliente(apellidosCliente);
+			model.addAttribute("clientes", clientesApellidos);
+		}
+
+		else if ((nombreCliente.equals("")) && (apellidosCliente.equals("")) && (!nifCliente.equals(""))
+				&& (cpCliente == 0) && (mailCliente.equals("")) && (telefonoCliente == 0)) {
+			Cliente clienteNIF = repClientes.findByNifCliente(nifCliente);
+			model.addAttribute("clientes", clienteNIF);
+		}
+
+		else if ((nombreCliente.equals("")) && (apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente != 0) && (mailCliente.equals("")) && (telefonoCliente == 0)) {
+			List<Cliente> clientesCP = repClientes.findByCpCliente(cpCliente);
+			model.addAttribute("clientes", clientesCP);
+		}
+
+		else if ((nombreCliente.equals("")) && (apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente == 0) && (!mailCliente.equals("")) && (telefonoCliente == 0)) {
+			Cliente clienteMail = repClientes.findByMailCliente(mailCliente);
+			model.addAttribute("clientes", clienteMail);
+		}
+
+		else if ((nombreCliente.equals("")) && (apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente == 0) && (mailCliente.equals("")) && (telefonoCliente != 0)) {
+			Cliente clienteTelefono = repClientes.findByTelefonoCliente(telefonoCliente);
+			model.addAttribute("clientes", clienteTelefono);
+		}
+
+		else if ((!nombreCliente.equals("")) && (!apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente == 0) && (mailCliente.equals("")) && (telefonoCliente == 0)) {
+			List<Cliente> clientesNombreApellidos = repClientes.findByNombreClienteAndApellidosCliente(nombreCliente,
+					apellidosCliente);
+			model.addAttribute("clientes", clientesNombreApellidos);
+		}
+
+		else if ((!nombreCliente.equals("")) && (apellidosCliente.equals("")) && (!nifCliente.equals(""))
+				&& (cpCliente == 0) && (mailCliente.equals("")) && (telefonoCliente == 0)) {
+			Cliente clienteNombreNIF = repClientes.findByNombreClienteAndNifCliente(nombreCliente, nifCliente);
+			model.addAttribute("clientes", clienteNombreNIF);
+		}
+
+		else if ((!nombreCliente.equals("")) && (apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente != 0) && (mailCliente.equals("")) && (telefonoCliente == 0)) {
+			List<Cliente> clientesNombreCP = repClientes.findByNombreClienteAndCpCliente(nombreCliente, cpCliente);
+			model.addAttribute("clientes", clientesNombreCP);
+		}
+
+		else if ((!nombreCliente.equals("")) && (apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente == 0) && (!mailCliente.equals("")) && (telefonoCliente == 0)) {
+			Cliente clienteNombreMail = repClientes.findByNombreClienteAndMailCliente(nombreCliente, mailCliente);
+			model.addAttribute("clientes", clienteNombreMail);
+		}
+
+		else if ((!nombreCliente.equals("")) && (apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente == 0) && (mailCliente.equals("")) && (telefonoCliente != 0)) {
+			Cliente clienteNombreTelefono = repClientes.findByNombreClienteAndTelefonoCliente(nombreCliente,
+					telefonoCliente);
+			model.addAttribute("clientes", clienteNombreTelefono);
+		}
+
+		else if ((nombreCliente.equals("")) && (!apellidosCliente.equals("")) && (!nifCliente.equals(""))
+				&& (cpCliente == 0) && (mailCliente.equals("")) && (telefonoCliente == 0)) {
+			Cliente clientesApellidosNIF = repClientes.findByApellidosClienteAndNifCliente(apellidosCliente,
+					nifCliente);
+			model.addAttribute("clientes", clientesApellidosNIF);
+		}
+
+		else if ((nombreCliente.equals("")) && (!apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente != 0) && (mailCliente.equals("")) && (telefonoCliente == 0)) {
+			List<Cliente> clientesApellidosCP = repClientes.findByApellidosClienteAndCpCliente(apellidosCliente,
+					cpCliente);
+			model.addAttribute("clientes", clientesApellidosCP);
+		}
+
+		else if ((nombreCliente.equals("")) && (!apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente == 0) && (!mailCliente.equals("")) && (telefonoCliente == 0)) {
+			Cliente clienteApellidosMail = repClientes.findByApellidosClienteAndMailCliente(apellidosCliente,
+					mailCliente);
+			model.addAttribute("clientes", clienteApellidosMail);
+		}
+
+		else if ((nombreCliente.equals("")) && (!apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente == 0) && (mailCliente.equals("")) && (telefonoCliente != 0)) {
+			Cliente clienteApellidosTelefono = repClientes.findByApellidosClienteAndTelefonoCliente(apellidosCliente,
+					telefonoCliente);
+			model.addAttribute("clientes", clienteApellidosTelefono);
+		}
+
+		else if ((nombreCliente.equals("")) && (apellidosCliente.equals("")) && (!nifCliente.equals(""))
+				&& (cpCliente != 0) && (mailCliente.equals("")) && (telefonoCliente == 0)) {
+			Cliente clienteNIFCP = repClientes.findByNifClienteAndCpCliente(nifCliente, cpCliente);
+			model.addAttribute("clientes", clienteNIFCP);
+		}
+
+		else if ((nombreCliente.equals("")) && (apellidosCliente.equals("")) && (!nifCliente.equals(""))
+				&& (cpCliente == 0) && (!mailCliente.equals("")) && (telefonoCliente == 0)) {
+			Cliente clienteNIFMail = repClientes.findByNifClienteAndMailCliente(nifCliente, mailCliente);
+			model.addAttribute("clientes", clienteNIFMail);
+		}
+
+		else if ((nombreCliente.equals("")) && (apellidosCliente.equals("")) && (!nifCliente.equals(""))
+				&& (cpCliente == 0) && (mailCliente.equals("")) && (telefonoCliente != 0)) {
+			Cliente clienteNIFTelefono = repClientes.findByNifClienteAndTelefonoCliente(nifCliente, telefonoCliente);
+			model.addAttribute("clientes", clienteNIFTelefono);
+		}
+
+		else if ((nombreCliente.equals("")) && (apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente != 0) && (!mailCliente.equals("")) && (telefonoCliente == 0)) {
+			Cliente clienteCPMail = repClientes.findByCpClienteAndMailCliente(cpCliente, mailCliente);
+			model.addAttribute("clientes", clienteCPMail);
+		}
+
+		else if ((nombreCliente.equals("")) && (apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente != 0) && (mailCliente.equals("")) && (telefonoCliente != 0)) {
+			Cliente clienteCPTelefono = repClientes.findByCpClienteAndTelefonoCliente(cpCliente, telefonoCliente);
+			model.addAttribute("clientes", clienteCPTelefono);
+		}
+
+		else if ((nombreCliente.equals("")) && (apellidosCliente.equals("")) && (nifCliente.equals(""))
+				&& (cpCliente == 0) && (!mailCliente.equals("")) && (telefonoCliente != 0)) {
+			Cliente clienteMailTelefono = repClientes.findByMailClienteAndTelefonoCliente(mailCliente, telefonoCliente);
+			model.addAttribute("clientes", clienteMailTelefono);
+		}
+
+		else if ((!nombreCliente.equals("")) && (!apellidosCliente.equals("")) && (!nifCliente.equals(""))
+				&& (cpCliente != 0) && (!mailCliente.equals("")) && (telefonoCliente != 0)) {
+			Cliente clienteTodo = repClientes
+					.findByNombreClienteAndApellidosClienteAndNifClienteAndCpClienteAndMailClienteAndTelefonoCliente(
+							nombreCliente, apellidosCliente, nifCliente, cpCliente, mailCliente, telefonoCliente);
+			model.addAttribute("clientes", clienteTodo);
+		}
+
+		else {
+			List<Cliente> clientes = repClientes.findAll();
+			model.addAttribute("clientes", clientes);
+		}
+
+		return "consultasClientes";
+	}
+
 	@RequestMapping(value = "/ordenarClientes")
 	public String ordenarClientes(@RequestParam int ordenCliente, Model model) {
 

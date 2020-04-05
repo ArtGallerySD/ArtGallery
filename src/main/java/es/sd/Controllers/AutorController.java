@@ -106,15 +106,15 @@ public class AutorController {
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresMail = repAutores.findByMailAutor(mailAutor);
-			model.addAttribute("autores", autoresMail);
+			Autor autorMail = repAutores.findByMailAutor(mailAutor);
+			model.addAttribute("autores", autorMail);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autoresTelefono = repAutores.findByTelefonoAutor(telefonoAutor);
-			model.addAttribute("autores", autoresTelefono);
+			Autor autorTelefono = repAutores.findByTelefonoAutor(telefonoAutor);
+			model.addAttribute("autores", autorTelefono);
 		}
 
 		else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
@@ -128,8 +128,8 @@ public class AutorController {
 		else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresNombreNIF = repAutores.findByNombreAutorAndNifAutor(nombreAutor, nifAutor);
-			model.addAttribute("autores", autoresNombreNIF);
+			Autor autorNombreNIF = repAutores.findByNombreAutorAndNifAutor(nombreAutor, nifAutor);
+			model.addAttribute("autores", autorNombreNIF);
 		}
 
 		else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
@@ -158,22 +158,22 @@ public class AutorController {
 		else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresNombreMail = repAutores.findByNombreAutorAndMailAutor(nombreAutor, mailAutor);
-			model.addAttribute("autores", autoresNombreMail);
+			Autor autorNombreMail = repAutores.findByNombreAutorAndMailAutor(nombreAutor, mailAutor);
+			model.addAttribute("autores", autorNombreMail);
 		}
 
 		else if ((!nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autoresNombreTelefono = repAutores.findByNombreAutorAndTelefonoAutor(nombreAutor, telefonoAutor);
-			model.addAttribute("autores", autoresNombreTelefono);
+			Autor autorNombreTelefono = repAutores.findByNombreAutorAndTelefonoAutor(nombreAutor, telefonoAutor);
+			model.addAttribute("autores", autorNombreTelefono);
 		}
 
 		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (!nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresApellidosNIF = repAutores.findByApellidosAutorAndNifAutor(apellidosAutor, nifAutor);
-			model.addAttribute("autores", autoresApellidosNIF);
+			Autor autorApellidosNIF = repAutores.findByApellidosAutorAndNifAutor(apellidosAutor, nifAutor);
+			model.addAttribute("autores", autorApellidosNIF);
 		}
 
 		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
@@ -202,51 +202,51 @@ public class AutorController {
 		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresApellidosMail = repAutores.findByApellidosAutorAndMailAutor(apellidosAutor, mailAutor);
-			model.addAttribute("autores", autoresApellidosMail);
+			Autor autorApellidosMail = repAutores.findByApellidosAutorAndMailAutor(apellidosAutor, mailAutor);
+			model.addAttribute("autores", autorApellidosMail);
 		}
 
 		else if ((nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autoresApellidosTelefono = repAutores.findByApellidosAutorAndTelefonoAutor(apellidosAutor,
+			Autor autorApellidosTelefono = repAutores.findByApellidosAutorAndTelefonoAutor(apellidosAutor,
 					telefonoAutor);
-			model.addAttribute("autores", autoresApellidosTelefono);
+			model.addAttribute("autores", autorApellidosTelefono);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
 				&& (anoNacimientoAutor != 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresNIFAno = repAutores.findByNifAutorAndAnoNacimientoAutor(nifAutor, anoNacimientoAutor);
-			model.addAttribute("autores", autoresNIFAno);
+			Autor autorNIFAno = repAutores.findByNifAutorAndAnoNacimientoAutor(nifAutor, anoNacimientoAutor);
+			model.addAttribute("autores", autorNIFAno);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (!paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresNIFPais = repAutores.findByNifAutorAndPaisNacimientoAutor(nifAutor, paisNacimientoAutor);
-			model.addAttribute("autores", autoresNIFPais);
+			Autor autorNIFPais = repAutores.findByNifAutorAndPaisNacimientoAutor(nifAutor, paisNacimientoAutor);
+			model.addAttribute("autores", autorNIFPais);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor != 0)
 				&& (mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresNIFCP = repAutores.findByNifAutorAndCpAutor(nifAutor, cpAutor);
-			model.addAttribute("autores", autoresNIFCP);
+			Autor autorNIFCP = repAutores.findByNifAutorAndCpAutor(nifAutor, cpAutor);
+			model.addAttribute("autores", autorNIFCP);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresNIFMail = repAutores.findByNifAutorAndMailAutor(nifAutor, mailAutor);
-			model.addAttribute("autores", autoresNIFMail);
+			Autor autorNIFMail = repAutores.findByNifAutorAndMailAutor(nifAutor, mailAutor);
+			model.addAttribute("autores", autorNIFMail);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (!nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autoresNIFTelefono = repAutores.findByNifAutorAndTelefonoAutor(nifAutor, telefonoAutor);
-			model.addAttribute("autores", autoresNIFTelefono);
+			Autor autorNIFTelefono = repAutores.findByNifAutorAndTelefonoAutor(nifAutor, telefonoAutor);
+			model.addAttribute("autores", autorNIFTelefono);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
@@ -267,16 +267,16 @@ public class AutorController {
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor != 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresAnoMail = repAutores.findByAnoNacimientoAutorAndMailAutor(anoNacimientoAutor, mailAutor);
-			model.addAttribute("autores", autoresAnoMail);
+			Autor autorAnoMail = repAutores.findByAnoNacimientoAutorAndMailAutor(anoNacimientoAutor, mailAutor);
+			model.addAttribute("autores", autorAnoMail);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor != 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autoresAnoTelefono = repAutores.findByAnoNacimientoAutorAndTelefonoAutor(anoNacimientoAutor,
+			Autor autorAnoTelefono = repAutores.findByAnoNacimientoAutorAndTelefonoAutor(anoNacimientoAutor,
 					telefonoAutor);
-			model.addAttribute("autores", autoresAnoTelefono);
+			model.addAttribute("autores", autorAnoTelefono);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
@@ -289,47 +289,47 @@ public class AutorController {
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (!paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresPaisMail = repAutores.findByPaisNacimientoAutorAndMailAutor(paisNacimientoAutor, mailAutor);
-			model.addAttribute("autores", autoresPaisMail);
+			Autor autorPaisMail = repAutores.findByPaisNacimientoAutorAndMailAutor(paisNacimientoAutor, mailAutor);
+			model.addAttribute("autores", autorPaisMail);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (!paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autoresPaisTelefono = repAutores.findByPaisNacimientoAutorAndTelefonoAutor(paisNacimientoAutor,
+			Autor autorPaisTelefono = repAutores.findByPaisNacimientoAutorAndTelefonoAutor(paisNacimientoAutor,
 					telefonoAutor);
-			model.addAttribute("autores", autoresPaisTelefono);
+			model.addAttribute("autores", autorPaisTelefono);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor != 0)
 				&& (!mailAutor.equals("")) && (telefonoAutor == 0)) {
-			Autor autoresCPMail = repAutores.findByCpAutorAndMailAutor(cpAutor, mailAutor);
-			model.addAttribute("autores", autoresCPMail);
+			Autor autorCPMail = repAutores.findByCpAutorAndMailAutor(cpAutor, mailAutor);
+			model.addAttribute("autores", autorCPMail);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor != 0)
 				&& (mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autoresCPTelefono = repAutores.findByCpAutorAndTelefonoAutor(cpAutor, telefonoAutor);
-			model.addAttribute("autores", autoresCPTelefono);
+			Autor autorCPTelefono = repAutores.findByCpAutorAndTelefonoAutor(cpAutor, telefonoAutor);
+			model.addAttribute("autores", autorCPTelefono);
 		}
 
 		else if ((nombreAutor.equals("")) && (apellidosAutor.equals("")) && (nifAutor.equals(""))
 				&& (anoNacimientoAutor == 0) && (paisNacimientoAutor.equals("")) && (cpAutor == 0)
 				&& (!mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autoresMailTelefono = repAutores.findByMailAutorAndTelefonoAutor(mailAutor, telefonoAutor);
-			model.addAttribute("autores", autoresMailTelefono);
+			Autor autorMailTelefono = repAutores.findByMailAutorAndTelefonoAutor(mailAutor, telefonoAutor);
+			model.addAttribute("autores", autorMailTelefono);
 		}
 
 		else if ((!nombreAutor.equals("")) && (!apellidosAutor.equals("")) && (!nifAutor.equals(""))
 				&& (anoNacimientoAutor != 0) && (!paisNacimientoAutor.equals("")) && (cpAutor != 0)
 				&& (!mailAutor.equals("")) && (telefonoAutor != 0)) {
-			Autor autoresTodo = repAutores
+			Autor autorTodo = repAutores
 					.findByNombreAutorAndApellidosAutorAndNifAutorAndAnoNacimientoAutorAndPaisNacimientoAutorAndCpAutorAndMailAutorAndTelefonoAutor(
 							nombreAutor, apellidosAutor, nifAutor, anoNacimientoAutor, paisNacimientoAutor, cpAutor,
 							mailAutor, telefonoAutor);
-			model.addAttribute("autores", autoresTodo);
+			model.addAttribute("autores", autorTodo);
 		}
 
 		else {
