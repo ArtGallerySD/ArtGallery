@@ -1,0 +1,35 @@
+ Apellidos, Nombre	     DNI
+
+Gómez Nogales, Gonzalo  - 49842513H
+Saiz Molero, Rubén      - 50561688Y
+Villar Ruiz, Miguel     - 53908541Z
+Luna Piñel, Miguel      - 53990180A
+
+Participación:
+
+ENTIDADES:
+- CUADROS: Miguel Villar y Gonzalo Gómez.
+- AUTORES: Rubén Saiz.
+- CLIENTES: Miguel Luna.
+
+REPOSITORIOS:
+- CUADROS: Gonzalo Gómez.
+- AUTORES: Rubén Saiz y Miguel Luna.
+- CLIENTES: Miguel Villar.
+
+CONTROLADORES:
+- CUADROS: Gonzalo Gómez y Miguel Villar.
+- AUTORES: Gonzalo Gómez y Miguel Luna.
+- CLIENTES: Rubén Saiz.
+- HOME: Miguel Villar, Miguel Luna y Rubén Saiz.
+
+VISTAS HTML (THYMELEAF):
+- DE FALLO Y DE ÉXITO: Miguel Luna y Rubén Saiz.
+- HOME: Miguel Villar.
+- MODIFICACIONES Y CONSULTAS: Gonzalo Gómez.
+- REGISTRO DE CUADROS, AUTORES Y CLIENTES: Todos.
+
+CSS:
+- IMPLEMENTACIÓN DEL BOOTSTRAP: Gonzalo Gómez.
+
+
