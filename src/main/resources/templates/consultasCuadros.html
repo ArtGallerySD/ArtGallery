@@ -136,7 +136,7 @@
 
 								<div class="form-group">
 									<select name="nifAutor" class="form-control">
-										<option selected value="0">No seleccionar Autor</option>
+										<option selected value="none">No seleccionar Autor</option>
 										<option th:if="autor.idAutor != null"
 											th:each="autor : ${autores}" th:value="${autor.nifAutor}"
 											th:text="${autor.nombreAutor} + ' - ' + ${autor.nifAutor}"></option>
@@ -154,7 +154,8 @@
 								<div class="form-group">
 									<select id="nifComprador" name="nifComprador"
 										class="form-control">
-										<option selected value="0">No seleccionar Comprador</option>
+										<option selected value="none">No seleccionar
+											Comprador</option>
 										<option th:if="cliente.idCliente != null"
 											th:each="cliente : ${clientes}"
 											th:value="${cliente.nifCliente}"

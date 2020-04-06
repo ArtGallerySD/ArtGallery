@@ -129,9 +129,8 @@ public class ClienteController {
 
 		else if ((nombreCliente.equals("")) && (!apellidosCliente.equals("")) && (!nifCliente.equals(""))
 				&& (cpCliente == 0) && (mailCliente.equals("")) && (telefonoCliente == 0)) {
-			Cliente clientesApellidosNIF = repClientes.findByApellidosClienteAndNifCliente(apellidosCliente,
-					nifCliente);
-			model.addAttribute("clientes", clientesApellidosNIF);
+			Cliente clienteApellidosNIF = repClientes.findByApellidosClienteAndNifCliente(apellidosCliente, nifCliente);
+			model.addAttribute("clientes", clienteApellidosNIF);
 		}
 
 		else if ((nombreCliente.equals("")) && (!apellidosCliente.equals("")) && (nifCliente.equals(""))
